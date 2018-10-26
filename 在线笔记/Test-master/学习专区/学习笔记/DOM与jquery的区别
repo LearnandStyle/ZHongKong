@@ -1,0 +1,7 @@
+1.用DOM方法获得到的对象，是DOM对象
+2.用jquery选择器获得的对象，是jquery对象
+3.jquery转成DOM对象
+    1. index方法   2. get方法
+4. DOM对象转jquery对象
+    把DOM对象用$()转换
+5.   jquery 与 其他js库共存   （jQuey.noConfict()释放$的控制权）

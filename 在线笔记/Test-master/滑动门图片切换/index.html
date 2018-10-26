@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				
+			}
+			.out_div{
+				width: 600px;
+				height: 350px;
+				border: thick solid orange;
+				margin: 50px auto;
+			}
+			.out_div>div:first-child{
+				width: 600px;
+				height: 50px;
+				font-size: 0;	
+			}
+			.out_div>div:last-child{
+				width: 600px;
+				height: 300px;
+			}
+			span{
+				display: inline-block;
+				height: 50px;
+				width: 33.3%;
+				font-size: 18px;
+				text-align: center;
+				line-height: 50px;	
+			}
+			.content_div{
+				width: 600px;
+				height: 300px;
+				display: none;
+			}
+			img{
+				width: 600px;
+				height: 300px;
+			}
+			
+			span.active {
+				background-color: #CFD3DC;
+				color: #fff;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="out_div">
+			<div id="">
+				<span id="item_span_1">
+					美女一号
+				</span>
+				<span id="item_span_2">
+					美女二号
+				</span>
+				<span id="item_span_3">
+					美女三号
+				</span>
+			</div>
+			<div id="">
+				<div class="content_div">
+					<img src="images/1.jpg"/>
+				</div>
+				<div class="content_div">
+					<img src="images/2.jpg"/>
+				</div>
+				<div class="content_div">
+					<img src="images/3.jpg"/>
+				</div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+		//选出三个图片盒子，并且将第一个图片盒子设置可见
+			var imgs_div=document.querySelectorAll(".content_div");
+			imgs_div[0].style.display="block";
+			
+			//获取span元素
+			var spans=document.querySelectorAll("span");
+			spans[0].className = "active";
+			//定义响应函数
+			function mouseoverListener (e) {
+				for (var i=0;i<spans.length;i++) {
+					//如果鼠标悬浮的是当前元素，设置display为block
+					if (e.target==spans[i]) {
+						imgs_div[i].style.display="block";
+						spans[i].className = "active";
+					}else{
+						imgs_div[i].style.display="none";
+						spans[i].className = "";
+					}
+				}
+			}
+			//给每个span添加响应函数
+			for (var i in spans) {
+				spans[i].onmouseover=mouseoverListener;
+			}
+		</script>
+	</body>
+</html>

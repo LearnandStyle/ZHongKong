@@ -1,0 +1,14 @@
+append:增加子集元素(尾部)
+prepend:增加子集元素(开头)
+before:增加同级元素(之前)
+after:增加同级元素(之后)
+eq:选取带有指定index值的元素
+siblings:选取同级元素
+on、bind:绑定事件
+
+IE：
+window.event.cancelBubble = true;//停止冒泡
+window.event.returnValue = false;//阻止事件的默认行为
+Firefox：
+event.preventDefault();// 取消事件的默认行为  
+event.stopPropagation(); // 阻止事件的传播

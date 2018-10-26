@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="hd">
+		<!--
+        	作者：940374606@qq.com
+        	时间：2017-03-11
+        	描述：
+        	ng-app="hd"：模块
+        	ng-controller="ctrl"：控制器
+        	ng-bind="name":视图
+        	ng-model="name":绑定数据模型
+        -->
+		<div ng-controller="ctrl">
+			{{name}}
+			<h2 ng-bind="name"></h2>
+			<input type="text" ng-model="name" />
+		</div>
+	</body>
+	<script type="text/javascript">
+		var m=angular.module('hd',[]);
+		//双向数据绑定
+		m.controller('ctrl',function($scope){
+			//viewModel
+			$scope.name='后盾网';
+		});
+	</script>
+</html>

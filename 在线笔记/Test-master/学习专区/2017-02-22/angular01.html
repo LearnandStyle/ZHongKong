@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>01</title>
+	<script src="js/angular.min.js"></script>
+</head>
+
+<!-- ng-app 指定边界-->
+
+<body ng-app="app">
+	<!-- ng-controller 指定控制器-->
+	<div ng-controller="MyCtrl">
+		<!-- ng-model 指定要显示的数据-->
+		<input type="text" ng-model="msg">
+		<!-- 显示数据的几种方式-->
+		<h1>{{msg}}</h1>
+		<h1 ng-bind="msg"></h1>
+		<h1 ng-clock class="ng-clock">{{msg}}</h1>
+	</div>
+</body>
+<script>
+	angular.module("app", [])
+		.controller("MyCtrl", function($scope) {
+			$scope.msg = "";
+		})
+		.controller("", function() {
+
+		})
+</script>
+
+</html>

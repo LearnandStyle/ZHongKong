@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="hd">
+		<div ng-controller="ctrl">
+			开启：<input type="radio" ng-model="status" ng-value="1"/>
+			<br />
+			关闭：<input type="radio" ng-model="status" ng-value="0"/>
+			<div ng-show="status==0">
+				网站正在维护中。
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var m = angular.module('hd',[]);
+		m.controller("ctrl",["$scope",function  ($scope) {
+			$scope.status=1;
+		}]);
+	</script>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="../../angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body ng-app="hd">
+		<!--
+        	作者：940374606@qq.com
+        	时间：2017-03-11
+        	描述：
+        	ng-app="hd"：模块
+        	ng-controller="ctrl"：控制器
+        	ng-bind="name":视图
+        	ng-model="name":绑定数据模型
+        -->
+		<div ng-controller="ctrl">
+			商品名称：{{goods.title}} 价格:{{goods.price}} 购买数量{{goods.num}}件 总计：{{goods.price*goods.num}}元
+			<button ng-click="add()">增加</button>
+			<button ng-click="reduce()">减少</button>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var m = angular.module('hd', []);
+		//双向数据绑定
+		m.controller('ctrl', function($scope) {
+			//viewModel
+			$scope.goods = { 'title': 'apple', 'price': '2.00', 'num': 0 };
+			$scope.add = function() {
+				$scope.goods.num++;
+			};
+			$scope.reduce = function() {
+				$scope.goods.num = Math.max(--$scope.goods.num, 0);
+			};
+		});
+	</script>
+
+</html>

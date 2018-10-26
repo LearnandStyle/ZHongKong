@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+	</body>
+	<script type="text/javascript">
+				
+		Object.prototype.toString();			//[object Object]
+		Object.prototype.toString.call();		//[object Undefined]
+		Object.prototype.toString.call([]);  	//[object Array]
+		Object.prototype.toString.call({});  	//[object Object]
+		Object.prototype.toString.call("");  	//[object String]
+
+		//函数的创建方式
+		//1.声明方式
+		function add(num1, num2) {
+			return num1 + num2;
+		}
+
+		//2.函数表达式
+		var add = function(num1, num2) {
+			return num1 + num2;
+		}
+
+		//3.函数对象方式
+		var sum3 = new Function("num1", "num2", "return num1+num2");
+		
+		//4.作为一个类构造器使用
+		function Add () {};
+		Add.prototype = {
+			constructor : Add
+		};
+		var add1 = new Add();
+		console.log(add1.constructor == Add);	// true
+		console.log(add1.constructor == Object);	// false
+		console.log(add1 instanceof Add);	// true
+		//instanceof 判定对象是否是特定类的一个实例
+	</script>
+
+</html>

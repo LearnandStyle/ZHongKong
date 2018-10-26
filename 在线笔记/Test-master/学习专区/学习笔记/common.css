@@ -1,0 +1,14 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/*按钮系列*/
+button,
+input[type="submit"],
+input[type="button"] {
+	border: 1px solid #DDDDDD;
+	outline: none;
+	background: none;
+	border-radius: 5px;
+}

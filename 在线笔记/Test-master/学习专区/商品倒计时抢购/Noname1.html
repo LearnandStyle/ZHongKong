@@ -1,0 +1,55 @@
+<html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#timercon {
+				display: inline-block;
+				padding: 5px 10px;
+				border: 1px solid #ddd;
+				font-size: 14px;
+				border-radius: 5px;
+				color: #fff;
+				background-color: #ddd;
+			}
+			
+			#timercon p {
+				display: inline-block;
+			}
+			
+			#timercon div {
+				display: inline-block;
+			}
+			
+			#timercon span:before {
+				content: "";
+				width: 5px;
+				display: inline-block;
+			}
+			
+		</style>
+		<script src="jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="countDown.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div id="timercon">
+			<p>限时抢购：</p>
+			<div id="timer"></div>
+		</div>
+	</body>
+
+	<script type="text/javascript">
+		(function() {
+
+			countDown('2017/5/29 15:37:00');
+
+		})();
+	</script>
+
+</html>

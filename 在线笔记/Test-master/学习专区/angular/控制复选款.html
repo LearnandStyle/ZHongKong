@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="hd">
+		<div ng-controller="ctrl">
+			游戏：<input type="checkbox" ng-model="data.game" ng-true-value="1" ng-false-value="0"/>
+			电影：<input type="checkbox" ng-model="data.video" ng-true-value="1" ng-false-value="0"/>
+			<div ng-show="data.game==1">
+				<h4>游戏</h4>
+				<textarea name="" rows="5" cols="20"></textarea>
+			</div>
+			<div ng-show="data.video==1">
+				<h4>电影</h4>
+				<textarea name="" rows="5" cols="20"></textarea>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var m = angular.module('hd',[]);
+		m.controller("ctrl",["$scope",function  ($scope) {
+			$scope.data={game:0,video:0};
+		}]);
+	</script>
+</html>

@@ -1,0 +1,29 @@
+.acquaintance_time {
+	width: 1040px;
+}
+
+.span-1 {
+	display: inline-block;
+	height: 50px;
+	line-height: 50px;
+	font-family: "微软雅黑";
+	font-size: 24px;
+}
+
+.span-1:first-child {
+	margin-left: 10px;
+}
+
+#acquaintance_days,
+#acquaintance_hours,
+#acquaintance_minus,
+#acquaintance_secos {
+	font-family: "微软雅黑";
+	font-size: 50px;
+	width: 100px;
+	height: 30px;
+	color: cornflowerblue;
+	line-height: 30px;
+	text-align: center;
+	display: inline-block;
+}

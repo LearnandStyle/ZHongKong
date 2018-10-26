@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			#news {
+				width: 500px;
+				height: 40px;
+				border: 5px solid darkturquoise;
+				margin: 100px auto;
+				position: relative;
+				overflow: hidden;
+			}
+			#info a {
+				display: block;
+				width: 500px;
+				text-align: center;
+				height: 40px;
+				line-height: 40px;
+			}
+			#info {
+				width: 500px;
+				position: absolute;
+				bottom:-40px;
+				left: 0;
+			}
+		</style>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="news">
+			<div id="info">
+				<a href="#">新闻新闻1</a>
+				<a href="#">新闻新闻2</a>
+				<a href="#">新闻新闻3</a>
+				<a href="#">新闻新闻4</a>
+				<a href="#">新闻新闻5</a>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		setInterval(function  () {
+			$("#info").append($("#info a").first().height(0).animate({"height":"40px"},500))
+		},3000);
+	</script>
+</html>

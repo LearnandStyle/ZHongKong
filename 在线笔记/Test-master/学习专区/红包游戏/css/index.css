@@ -1,0 +1,72 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+button {
+	outline: none;
+	border: none;
+	background: #FFFFFF;
+}
+
+#window {
+	width: 25vw;
+	height: 100vh;
+	background-color: #FFC0CB;
+	margin: 0 auto;
+	position: relative;
+}
+
+#startPage {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #B9BCC0;
+	z-index: 2;
+	text-align: center;
+	display: inline-block;
+	line-height: 100vh;
+}
+
+#btn {
+	display: inline-block;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+}	
+
+#gamePage {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: darkcyan;
+	z-index: 1;
+}
+
+#pageBox {
+	position: relative;
+}
+
+.view-box {
+	position: absolute;
+	right: 15px;
+	top: 15px;
+	font-size: 14px;
+	color: rgb(255, 255, 255);
+	z-index: 2;
+}
+
+.packet {
+	position: absolute;
+	width: 50px;
+	height: 25px;
+	background-color: coral;
+	border-radius: 5px;
+	top: -25px;
+	transition: all 0.5s;
+}
+

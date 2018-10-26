@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			#myCanvas{
+				display: block;
+				margin: 0 auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<canvas id="myCanvas" width="800" height="600"></canvas>
+		</div>
+		<script type="text/javascript">
+			var canvas=document.querySelector("#myCanvas");
+			var pen=canvas.getContext("2d");
+			
+			//左边半圆
+			pen.beginPath();
+			pen.arc(400,300,200,-0.5*Math.PI,0.5*Math.PI,true);
+			pen.stroke();
+			pen.fill();
+			
+			//右边半圆
+			pen.beginPath();
+			pen.arc(400,300,200,-0.5*Math.PI,0.5*Math.PI,false);
+			pen.stroke();
+			
+			
+			pen.beginPath();
+			pen.arc(400,200,100,0*Math.PI,2*Math.PI,false);
+			pen.closePath();
+			pen.fillStyle="white";
+			pen.fill();
+			
+			
+			pen.beginPath();
+			pen.arc(400,400,100,0*Math.PI,2*Math.PI,false);
+			pen.closePath();
+			pen.fillStyle="black";
+			pen.fill();
+			
+			//上面黑色小圆
+			pen.beginPath();
+			pen.arc(400,200,50,0*Math.PI,2*Math.PI,false);
+			pen.closePath();
+			pen.fillStyle="black";
+			pen.fill();
+			
+			//下面白色小圆
+			pen.beginPath();
+			pen.arc(400,400,50,0*Math.PI,2*Math.PI,false);
+			pen.closePath();
+			pen.fillStyle="white";
+			pen.fill();
+		</script>
+	</body>
+</html>

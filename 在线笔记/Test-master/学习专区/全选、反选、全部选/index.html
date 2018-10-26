@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+
+	<body>
+		<form action="#" method="post" id="form">
+			<table border="1" width="300px" style="margin: 20px auto;text-align: center;">
+				<tr>
+					<td colspan="3"><input type="checkbox" />告白气球</td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="checkbox" />告白气球</td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="checkbox" />告白气球</td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="checkbox" />告白气球</td>
+				</tr>
+				<tr>
+					<td colspan="3"><input type="checkbox" />告白气球</td>
+				</tr>
+				<tr>
+					<td><input type="button" value="全选" id="all" /></td>
+					<td><input type="button" value="反选" id="allRevise" /></td>
+					<td><input type="button" value="全不选" id="allFalse" /></td>
+				</tr>
+			</table>
+		</form>
+	</body>
+	<script type="text/javascript">
+		//prop获取特定的属性
+
+		//全选
+		$("#all").on("click", function() {
+			$("#form :checkbox").prop("checked", true);
+		});
+
+		//全不选
+		$("#allFalse").on("click", function() {
+			$("#form :checkbox").prop("checked", false);
+		});
+
+		//反选
+		//第一种方法
+		/*
+		$("#allRevise").on("click", function() {
+			//获得现在处在选中状态的元素
+			var objs= $("#form :checked");
+			$("#form :checkbox").prop("checked", true);
+			//将刚才处在被选中状态的元素取消选中状态
+			objs.prop("checked",false);
+		});
+		*/
+		
+		//第二种方法
+		$("#allRevise").on("click", function() {
+			$("#form :checkbox").prop("checked",function  (i,val) {
+				return !val;
+			});
+		});
+	</script>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>事件停止传播与效果</title>
+</head>
+
+<body>
+	<!--	
+	思考：
+		不管是捕捉还是冒泡的过程中，能否停止事件的传播？
+	答：当然能，可以停止事件的传播！
+		用事件对象的stopPropagation();就能把事件的传播停止。
+	
+	以表单为例，可以用ev.preventDefault();
+-->
+	<form action="" id="fm">
+		<p>
+			<input type="text" id="age" name="age">
+		</p>
+		<p>
+			<input type="submit" value="提交">
+		</p>
+	</form>
+
+	<script>
+		function $(id) {
+			return document.getElementById(id);
+		}
+		//添加事件
+		$('fm').addEventListener('submit', function(ev) {
+			ev.preventDefault(); //w3c
+			ev.returnValue = false; //ie
+		}, false);
+
+		//移除事件
+		removeEventListener('',fn,false);//w3c
+		detachEventListener();//ie8以下
+	</script>
+</body>
+
+</html>

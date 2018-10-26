@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>mysiky</title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		ul li {
+			list-style: none;
+		}
+		
+		a {
+			text-decoration: none;
+		}
+		
+		#header {
+			width: 100%;
+			height: 65px;
+			font-size: 0;
+			background-color: yellow;
+			position: fixed;
+			top: 0;
+			z-index: 9;
+			border-radius: 10px;
+		}
+		
+		#header>a {
+			display: inline-block;
+			height: 65px;
+			line-height: 65px;
+			width: 20%;
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+		}
+		
+		.active {
+			background-color: burlywood;
+			border-radius: 10px;
+		}
+		
+		#content {
+			position: relative;
+			top: 65px;
+		}
+		
+		#content>div {
+			width: 100%;
+			height: 500px;
+			border: 2px solid royalblue;
+		}
+	</style>
+
+	<body>
+		<div id="header">
+			<a href="#home" class="active">首页</a>
+			<a href="#story">故事</a>
+			<a href="#phpto">相册</a>
+			<a href="#sing">诗歌</a>
+			<a href="#book">日志</a>
+		</div>
+		<div id="content">
+			<div id="home">
+				1
+			</div>
+			<div id="story">
+				2
+			</div>
+			<div id="phpto">
+				3
+			</div>
+			<div id="sing">
+				4
+			</div>
+			<div id="book">
+				5
+			</div>
+		</div>
+
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script type="text/javascript">
+			var aA = $("#header>a");
+			var oHeader = $("#header");
+			var num = oHeader.height();
+			var aDiv=$("#content>div");
+			//定义一个获取所有div距离的数组
+			var arrOffsetTop=[];
+			for (var i=0;i<aDiv.length;i++) {
+				arrOffsetTop.push(aDiv.eq(i).offset().top);
+			}
+			
+			//获取每个div的平均高度
+			var everyHgt=0;
+			for (var i=0;i<aDiv.length;i++) {
+				everyHgt += aDiv.eq(i).outerHeight();
+			}
+			var fAverageHgt=parseFloat(everyHgt / aDiv.length);
+			
+			//导航栏切换
+			aA.click(function(ev) {
+				var ev = ev || window.event;
+				$(this).addClass('active').siblings().removeClass('active');
+				$("body,html").animate({
+					scrollTop:arrOffsetTop[$(this).index()]- num
+				},1000);
+				ev.stopPropagation();
+			});
+			
+			//刷新页面滚动条回到顶部
+			$(window).load(function  () {
+				$("body,html").animate({
+					scrollTop:0
+				},1000);
+			});
+			
+			//滚动条滚动事件(每次滚动都做一次循环)
+			$(window).scroll(function  () {
+				for (var i=0;i<aDiv.length;i++) {
+					if ($(this).scrollTop() > arrOffsetTop[i] - fAverageHgt) {
+						aA.eq(i).addClass('active').siblings().removeClass('active');
+					}
+				}
+			});
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<button>确认</button>
+		<input type="button" value="点击" />
+	</body>
+	<script type="text/javascript">
+		window.add = function (num,callback) {
+			$("input[type=button]").on("click",function  () {
+				callback(true);
+			});
+		}
+		
+		$("button").on("click",function  () {
+			window.add(5,function  (bok) {
+				if(bok){
+					console.log(1111)
+				};
+			});
+		});
+	</script>
+</html>

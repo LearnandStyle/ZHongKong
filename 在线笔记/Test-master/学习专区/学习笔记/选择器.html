@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>CSS选择器</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+				font-family: "微软雅黑" serif sans-serif;
+			}
+			body {
+				background: rgba(125,250,123,0.3)
+			}
+			pre {
+				line-height: 20px;
+				font-size: 16px;
+				color: dodgerblue;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<!--伪元素选择器  p::first-line 前面加两个冒号-->
+		<pre>
+			伪元素选择器  p::first-line 前面加两个冒号
+		</pre>
+		<!--
+			伪类选择器 --子元素选择器
+			:first-child[子元素选择器]
+			:last-child[子元素的最后一个元素]
+			:only-child[只有一个子元素的那个子元素]
+			:only-of-type[只有一个指定类型的子元素的那个子元素]
+			:nth-child(n)[]
+			:nth-last-child(n)[倒数第几个元素]
+			:nth-of-type(n)[特定子元素的第几个元素]
+			:nth-last-of-type(n)[特定子元素的倒数第几个元素]
+		-->
+		<pre>
+			伪类选择器 --子元素选择器
+			:first-child[子元素选择器]
+			:last-child[子元素的最后一个元素]
+			:only-child[只有一个子元素的那个子元素]
+			:only-of-type[只有一个指定类型的子元素的那个子元素]
+			:nth-child(n)[]
+			:nth-last-child(n)[倒数第几个元素]
+			:nth-of-type(n)[特定子元素的第几个元素]
+			:nth-last-of-type(n)[特定子元素的倒数第几个元素]
+		</pre>
+		<!--
+			UI伪类选择器 	用在表单里面的
+			:enabled[启用]
+			:disabled[禁用]
+			:checked[选定]
+			:default[默认]
+			:valid[合法状态]
+			:invalid[不合法状态]
+			:required[必填的属性]
+			:optional[不是必填的属性]
+		-->
+		<pre>
+			UI伪类选择器 	用在表单里面的
+			:enabled[启用]
+			:disabled[禁用]
+			:checked[选定]
+			:default[默认]
+			:valid[合法状态]
+			:invalid[不合法状态]
+			:required[必填的属性]
+			:optional[不是必填的属性]
+		</pre>
+		<!--
+			动态伪类选择器
+			:link[未访问]
+			:visited[访问之后]
+			:hover[鼠标悬停]
+			:active[激活状态]
+			:focus[获取焦点]
+		-->
+		<pre>
+			动态伪类选择器
+			:link[未访问]
+			:visited[访问之后]
+			:hover[鼠标悬停]
+			:active[激活状态]
+			:focus[获取焦点]
+		</pre>
+		
+	</body>
+</html>

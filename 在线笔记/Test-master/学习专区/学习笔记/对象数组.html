@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div><span></span><i></i></div>
+		<div><span></span><i></i></div>
+		<div><span></span><i></i></div>
+		<div><span></span><i></i></div>
+		<div><span></span><i></i></div>
+	</body>
+	<script type="text/javascript">
+		var arr="";
+		var imgArr = [];
+		for (var i=0;i<$("div").length;i++) {
+			arr ={
+				"imgUrl":$("div").eq(i).find("span").html(),
+				"linkUrl":$("div").eq(i).find("i").html()
+			};
+			imgArr.push(arr);
+		}
+		for (var i in imgArr) {
+			console.log(imgArr[i])
+		}
+	</script>
+</html>

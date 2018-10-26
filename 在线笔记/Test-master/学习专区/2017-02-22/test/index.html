@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head>
+	<meta charset="UTF-8">
+	<title>数据分析</title>
+	<script src="js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/angular.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script src="js/app.js" type="text/javascript" charset="utf-8"></script>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		#box {
+			clear: both;
+		}
+		#box>span{
+			display: block;
+			padding: 3px;
+		}
+	</style>
+</head>
+
+<body ng-controller="MyCtrl">
+	<span>选择公司</span>
+
+	<p ng-repeat="item in cname" ng-click="showdata(item)"><a href="#">{{item}}</a></p>
+
+	
+	<!--历史薪酬总量开始-->
+	<div id="main" style="width: 100%;height:400px;" ng-model="mychart"></div>
+	<!--历史薪酬总量结束-->
+	
+	<!--薪酬总量图表-->
+	<div id="main1" style="width:100%;height:400px;" ng-model="charts"></div>
+	
+	<!--部门选项-->
+	<div id="box">
+		<p>部门选项 | 本期占比</p>
+		<span ng-repeat=" item in dname | unique:'wd13'" ng-click="department(item.wd13,item.wd08,item.dl05)">
+			{{item.wd13 +'---'+(item.dl05Proportion*100 | number |limitTo:4)+'%'}}
+		</span>
+	</div>
+	
+
+	<!--各部门薪酬总量-->
+	<div id="main2" style="width:100%;height:400px;" ng-model="chart"></div>
+
+	<div id="main3" style="width:100%;height:400px;" ng-model="charta"></div>
+	
+	
+</body>
+
+</html>

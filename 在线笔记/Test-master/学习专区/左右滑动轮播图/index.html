@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>左右滑动轮播图</title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul li{
+				list-style: none;
+			}
+			
+			#outBox {
+				width: 500px;
+				height: 300px;
+				margin: 50px auto;
+				border: 5px solid darkcyan;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			#innerBox {
+				height: 300px;
+				width: 3000px;
+				background: pink;
+				font-size: 0;
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
+			
+			.img {
+				display: inline-block;
+				width: 500px;
+				height: 300px;
+				font-size: 20px;
+				text-align: center;
+				line-height: 300px;
+			}
+			#arrow {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				overflow: hidden;
+			}
+			#arrow li {
+				float: left;
+				padding: 5px 10px;
+				background: rgba(0,0,0,0.4);
+				margin-left: 1px;
+				cursor: pointer;
+			}
+			
+			#arrow li:hover {
+				text-decoration: underline;
+				color: #c00;
+			}
+		</style>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="outBox">
+			<ul id="innerBox">
+				<li class="img">图片1</li>
+				<li class="img">图片2</li>
+				<li class="img">图片3</li>
+				<li class="img">图片4</li>
+				<li class="img">图片5</li>
+				<li class="img">图片1</li>
+			</ul>
+			<ul id="arrow">
+				<li style="color: blue;">图片1</li>
+				<li>图片2</li>
+				<li>图片3</li>
+				<li>图片4</li>
+				<li>图片5</li>
+			</ul>
+		</div>
+	</body>
+	<script type="text/javascript">
+		var _index = 0; 
+		//图片自动轮播
+		function move () {
+			_index++;
+			if(_index==6){
+				$("#innerBox").css("left",0);
+				_index = 1;
+			}
+			//计算大div应该移动的left值
+			var l = _index * -$("#innerBox li").width();
+			$("#innerBox").stop().animate({"left":l+"px"},300);
+			if(_index ==5){
+				$("#arrow li").eq(0).css({"color":"blue"}).siblings().css({"color":"white"});
+			}else{
+				$("#arrow li").eq(_index).css({"color":"blue"}).siblings().css({"color":"white"});
+			}
+		}
+		var timer = setInterval(move,3000);
+		
+		$("#arrow").on("mouseover",function  () {
+			clearInterval(timer);
+		}).on("mouseout",function  () {
+			timer = setInterval(move,3000);
+		});
+		
+		$("#arrow li").on("click",function  () {
+			_index = $(this).index();
+			//计算大div应该到达的left值
+			left = _index * -$("#innerBox li").width();
+			$("#innerBox").stop().animate({"left":left+"px"},300);
+			$(this).css({"color":"blue"}).siblings().css({"color":"white"});
+		});
+		
+		
+	</script>
+</html>

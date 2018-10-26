@@ -1,0 +1,84 @@
+用户名：root
+密码：123456789
+http://localhost/phpMyAdmin/index.php?token=40e65c8788c250f662cf154739215fe6
+
+创建数据库的步骤：
+
+1.登录数据库
+	
+	mysql -u root -p回车
+
+2.输入密码：
+
+	123456789
+	
+2.1.显示数据库
+
+	show databases;
+
+3.创建数据库：
+
+	create database 数据库名称（如：wuxiaogang）
+
+4.使用数据库：
+
+	use 数据库名称 (如：use wuxiaogang)
+
+5.创建数据表：
+
+	create table 数据表名称(
+		
+		注意：英文状态下的括号和分号
+
+				);
+6.显示表的结构
+
+	descirbe 数据表名;
+
+6.1.显示表的内容
+
+	select * from 数据表名；
+
+7.给表插入一条数据
+
+	insert into 数据表名 (字段名,字段名,字段名) values ('值','值','值');
+
+8.刷选指定的数据
+
+	select * from 数据表名 where 字段名='值';
+
+9.修改指定的数据
+
+	update 数据表名 set 新的字段名='值' where 旧的字段名='值';
+
+10.删除指定的数据
+
+	delete from 数据表名 where 字段名='值';
+
+11.按指定的数据排序（正序）
+
+	select * from 字段名='值' order by 字段名 desc;
+
+12.删除指定的数据表
+
+	drop table 数据表名;
+
+13.删除指定的数据库
+
+	drop database 数据库名;
+
+检查当前表的信息
+
+	show table status \G;
+
+优化一张表
+
+	optimize table 数据表名;
+
+
+
+
+
+
+	
+C:\Windows\System32\drivers\etc

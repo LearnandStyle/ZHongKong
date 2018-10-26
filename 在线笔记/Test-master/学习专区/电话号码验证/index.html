@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>电话号码验证</title>
+    <script type="text/javascript">
+    function checkTel(tel){
+        if(!/^(\(\d{3,4}\)|\d{3,4}-|\s)?\d{7,14}$/.test(tel)){
+            alert('固定电话有误，请重填');
+            return false;
+        }
+    }
+</script>
+</head>
+<body>
+    <label>电话号码：</label>
+    <input type="text" name="telphone">
+</body>
+<script type="text/javascript">
+    var telphoneNum = document.getElementsByTagName("input")[0];
+    telphoneNum.onblur = function(){
+        checkTel(telphoneNum.value);
+    }
+</script>
+</html>

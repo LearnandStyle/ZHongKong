@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>弹力球</title>
+		<style type="text/css">
+			#imgid {
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				position: absolute;
+				background: url(qiu.png) no-repeat;
+				background-size: cover;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="imgid"></div>
+	</body>
+	<script type="text/javascript">
+		var imgid = document.getElementById("imgid");
+		var xv = 10, yv = 5 , x = 0, y = 0;
+		var h = document.documentElement.clientHeight - 100;
+		var w = document.documentElement.clientWidth- 100;
+		setInterval(function  () {
+			y += yv;
+			x += xv;
+			if (y >= h) {
+				y = h;
+				yv = -yv;
+			}
+			if (y <= 0) {
+				yv = -yv;
+			}
+			
+			if (x  >= w) {
+				x = w;
+				xv=-xv;
+			}
+			if (x<=0) {
+				xv=-xv;
+			}
+			imgid.style.top= y+"px";
+			imgid.style.left=x+"px";
+		},100);
+	</script>
+</html>

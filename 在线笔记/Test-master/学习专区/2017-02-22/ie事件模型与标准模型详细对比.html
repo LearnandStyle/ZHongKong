@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+
+<body>
+<!--
+针对IE模型的事件写法：
+适用于IE7、8、9
+
+IE的事件模型相比w3c的事件模型，主要有3点不同：
+1.绑定事件的函数不祥，IE中用 attachEvent();
+2.事件必须要加 on 
+3.IE6事件模型中，不支持捕捉，只支持冒泡
+4.this 的指向问题,w3c中this指向对象本身，IE指向window
+5.事件对象的不同，w3c是传递给事件函数的第一个参数，IE是全局的window.event
+	实测：IE6、7、8已经支持自动传入event对象
+-->
+
+	<input type="button" id="test1" value="点我">
+	<script>
+		/*
+		@obj:待绑定事件的对象
+		@type:事件类型
+		@event:事件对象，是一个函数
+		@model:捕捉、冒泡
+		*/
+		function addEvent ( obj,type,event,model){
+			
+			
+			if(!obj[('_'+type)]){
+				obj[('_'+type)]=[];
+			}
+			
+			obj[('_'+type)].push(event);
+			
+			if(!obj[('on'+type)]){
+				obj[('on'+type)]=function(){
+					var i=0,
+						len=obj[('_'+type)].length;
+					for(i,len;i<len;i++){
+						obj[('_'+type)][i].apply(obj);
+					}
+				}
+			}
+			
+//			if(obj.attachEvent){
+//				obj.attachEvent('on'+type,event,model);
+//			}else{
+//				obj.addEventListener(type,event,model);
+//			}
+		}
+	</script>
+</body>
+
+</html>

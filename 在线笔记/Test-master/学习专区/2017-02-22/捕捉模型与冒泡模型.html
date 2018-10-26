@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>捕捉模型与冒泡模型</title>
+	<style>
+		#china {
+			width: 600px;
+			height: 600px;
+			margin: auto;
+			border: 1px solid black;
+		}
+		
+		#beijing {
+			width: 400px;
+			height: 400px;
+			margin: auto;
+			border: 1px solid red;
+		}
+		
+		#haidian {
+			width: 200px;
+			height: 200px;
+			margin: auto;
+			border: 1px solid green;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="china">
+	<p>
+		总结：1.第三个参数，true和false，分别代表捕捉和冒泡，如果不填，默认是false（冒泡），为了兼容性，建议填写
+		2.系统会为事件，自动生成事件对象
+	</p>
+		china
+		<div id="beijing">
+			beijing
+			<div id="haidian">
+				haidian
+			</div>
+		</div>
+	</div>
+</body>
+
+<script>
+	/*w3c标准中，同时支持2种方式，分别为，由外向内的捕捉模型，
+	由内向外的冒泡模型*/
+	var china = document.getElementById("china"),
+		beijing = document.getElementById("beijing"),
+		haidian = document.getElementById("haidian");
+	//	以下是捕获事件流
+	china.addEventListener("click", function() {
+		alert("china");
+	}, true);
+	beijing.addEventListener("click", function() {
+		alert("beijing");
+	}, true);
+	haidian.addEventListener("click", function() {
+		alert("haidian");
+	}, true);
+	//	以下是冒泡事件流
+	china.addEventListener("click", function() {
+		alert("china");
+	}, false);
+	beijing.addEventListener("click", function() {
+		alert("beijing");
+	}, false);
+	haidian.addEventListener("click", function() {
+		alert("haidian");
+	}, false);
+</script>
+
+</html>

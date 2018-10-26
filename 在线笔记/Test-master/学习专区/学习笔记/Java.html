@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Java笔记</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			color: white;
+		}	
+
+		body {
+			background-color: #12486A;
+		}
+
+		#content {
+			width: 95%;
+			margin: 0 auto;
+		}
+
+		h4 {
+			text-align: center;
+			margin-top: 15px;
+		}
+		p {
+			color: white;
+			margin: 20px 0 0 0;
+			border: 2px solid #506F81;
+			border-radius: 5px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="content">
+		<h4>Java笔记</h4>
+		<p id="first">
+			String类型的数据，首先要开辟一个新的空间，是引用数据类型，一旦声明了就不可改变，还有数值类的数据，也是不会改变的。<br/>
+			String类对象有两种实例化方式：<br/>
+			1、使用关键字new ：开辟两块内存空间，其中有一块空间会成为垃圾，不会自动入池，可以使用intern（）方法手工入池。
+			<br/>
+			2、直接赋值（构造方法赋值）：开辟一块内存空间，可以自动保存在对象池之中，供下次使用。<br/>
+		</p>
+		<p>
+
+		</p>
+	</div>
+</body>
+</html>

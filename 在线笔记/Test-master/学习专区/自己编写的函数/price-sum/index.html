@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>价格总计</title>
+		<script src="../angular.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body ng-app="myapp" ng-controller="myCtrl">
+		<form action="request.php" method="post">
+			<p>
+				名称：<input type="text" name="name"/>
+			</p>
+			<p>
+				价格：<input type="text" name="price"/>
+			</p>
+			<p>
+				时间：<input type="text" name="time"/>
+			</p>
+			<p>
+				<input type="submit" value="提交" id="btn"/>
+			</p>
+		</form>
+	</body>
+	
+	<script type="text/javascript">
+		var myapp=angular.module('myapp',[]);
+		myapp.controller('myCtrl',function($scope,$http){
+			$http.get('',function  (res) {
+				
+			});
+		});
+	</script>
+</html>

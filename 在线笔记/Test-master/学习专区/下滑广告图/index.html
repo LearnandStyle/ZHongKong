@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			div {
+				width: 1000px;
+				margin: 0 auto;
+			}
+			#topImg {
+				height: 300px;
+				margin-top: -300px;
+				background: pink;
+				text-align: center;
+				line-height: 300px;
+				font-size: 50px;
+			}
+			
+			#contentBox {
+				background: dodgerblue;
+				text-align: center;
+				font-size: 45px;
+			}
+			
+		</style>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="topImg">广告投放区域</div>
+		<div id="contentBox">内容区域</div>
+	</body>
+	<script type="text/javascript">
+		$("#topImg").animate({"margin-top":"0"},3000,function  () {
+//			setTimeout(function  () {
+//				$("#topImg").animate({"margin-top":"-300px"},3000);
+//			},3000);
+			//delay 一般写在运动之前，延迟执行
+			$("#topImg").delay(3000).animate({"margin-top":"-300px"},3000);
+		});
+	</script>
+</html>

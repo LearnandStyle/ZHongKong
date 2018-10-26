@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<title>index</title>
+
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+		
+			table {
+				width: 100%;
+				height: 300px;
+			}
+			
+			.table-tr {
+				text-align: center;
+			}
+			.table-tr td{
+				background-color: darkgrey;
+				color: white;
+				font-size: 18px;
+				font-family: "微软雅黑;
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<div id="box">
+			<table border="2" cellspacing="5" cellpadding="">
+				<tr>
+					<th colspan="9" style="background-color: pink;">javascript、jquery</th>
+				</tr>
+				<tr align="center">
+					<td colspan="4" style="background-color: darkcyan;">javascript</td>
+					<td rowspan="6">&nbsp;</td>
+					<td colspan="4" style="background-color: deepskyblue;">jquery</td>
+				</tr>
+				<tr align="center">
+					<!-- javascript -->
+					<td style="background-color: #5BC0DE;">width</td>
+					<td style="background-color: orange;">height</td>
+					<td style="background-color: yellow;">top</td>
+					<td style="background-color: lightseagreen;">left</td>
+					
+					<!-- jquery -->
+					<td style="background-color: cornflowerblue;">width</td>
+					<td style="background-color: firebrick;">height</td>
+					<td style="background-color: fuchsia;">top</td>
+					<td style="background-color: darkslategrey;">left</td>
+				</tr>
+				<tr  class="table-tr">
+					<!-- javascript -->
+					<td>obj.style.width</td>
+					<td>obj.style.height</td>
+					<td rowspan="4">obj.offsetTop</td>
+					<td rowspan="4">obj.offsetLeft</td>
+					
+					<!-- jquery -->
+					<td>obj.width()</td>
+					<td>obj.height()</td>
+					<td>obj.offset().top</td>
+					<td>obj.offset().left</td>
+				</tr>
+				
+				<tr  class="table-tr">
+					<!-- javascript -->
+					<td>obj.offsetWidth</td>
+					<td>obj.offsetHeight</td>
+					
+					
+					<!-- jquery -->
+					<td>obj.innerWidth()</td>
+					<td>obj.innerHeight()</td>
+					<td rowspan="3">obj.css("top")</td>
+					<td rowspan="3">obj.css("left")</td>
+				</tr>
+				
+				<tr  class="table-tr">
+					<!-- javascript -->
+					<td rowspan="2">obj.clientWidth</td>
+					<td rowspan="2">obj.clientHeight</td
+						
+					<!-- jquery -->
+					<td>obj.outerWidth()</td>
+					<td>obj.outerHeight()</td>
+				</tr>
+				
+				<tr  class="table-tr">
+					<!-- javascript -->
+					
+					
+					<!-- jquery -->
+					<td>obj.css("width")</td>
+					<td>obj.css("height")</td>
+					
+				</tr>
+			</table>
+		</div>
+	</body>
+
+</html>

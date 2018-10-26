@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>document</title>
+</head>
+
+<body>
+
+
+	<!--
+
+	 绑定事件的3种方式 
+	 	1.把事件写在标签的属性里面，几乎所有的浏览器都支	持；
+	 		 不足：夹杂在HTML中，不简洁；
+	 		 这种事件写法，效率不高；
+	 		 不符合，行为，结构，样式相分离。 
+	 	2.用事件属性绑定事件函数 
+	 		好处：1.完成了行为的分离
+	 			 2.便于操作当事对象，因为函数是作为对象的on属性出现的，因此函数里操作该对	  象，直接用this就能引用；
+	 			 3.可以方便的读取事件对象,在事件触发时，系统自动将事件对象，传递给事件函数，以其第一个参数来传递
+	 		坏处：只能绑定一个事件
+	 	3.addEventListener w3c标准
+ 			语法：DomObject.addEventListener
+ 		1.绑在哪个事件上？
+ 		2.绑定什么函数？
+ 		3.什么方式监听执行事件函数？捕捉、冒泡
+	 			
+	 			
+	 	
+-->
+	<div id="test1"></div>
+	<script>
+		var test1=document.getElementById("test1");
+		test1.addEventListener("click",function(){
+			alert("我是div，我有"+this.style.width+"宽");
+		},false);
+	</script>
+
+</body>
+
+</html>
