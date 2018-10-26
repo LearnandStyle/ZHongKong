@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+			
+		}
+		ul {
+			list-style: none;
+		}
+		.tabBox {
+			width: 500px;
+			margin: 20px auto;
+		}
+		.tabBox ul {
+			overflow: hidden;
+			position: relative;
+			top: 1px;
+		}
+		/*.tabBox ul:after {
+			display: block;
+			content:'';
+			clear: both;
+		}*/
+		.tabBox ul li {
+			padding: 0 10px;
+			float: left;
+			margin-right: 10px;
+			height: 35px;
+			line-height: 35px;
+			border: 2px solid #999;
+			background: #ccc;
+			cursor: pointer;
+		}
+		.tabBox ul li.select {
+			background: #fff;
+			border-bottom-color: #fff;
+		}
+		.tabBox div {
+			height: 140px;
+			line-height: 150px;
+			text-align: center;
+			border: 1px solid #ccc;
+			display: none;
+		}
+		.tabBox div.select {
+			display: block;
+		}
+	</style>
+	<body>
+		<div class="tabBox" id='tabBox'>
+			<ul>
+				<li class="select">新闻</li>
+				<li>电影</li>
+				<li>音乐</li>
+			</ul>
+			<div class="select">热烈庆祝中国召开19大</div>
+			<div>秀秀的铁拳</div>
+			<div>毛不易--消愁</div>
+		</div>
+		<a href=""></a>
+		<script type="text/javascript">
+			var tabBox = document.getElementById('tabBox'),
+			    oList = tabBox.getElementsByTagName('li'),
+			    oDivList = tabBox.getElementsByTagName('div');
+			
+			function change(index){
+				for (var i=0 ; i<oList.length;i++){
+					oList[i].className = '';
+					oDivList[i].className = '';
+					
+				}
+				oList[index].className = 'select';
+				oDivList[index].className = 'select';
+			}
+			//以下两种是闭包  其实质是一样的
+			for (var i = 0; i < oList.length;i++){
+				~ function(i){//此i是形参  ~是分界符 和！ + void 类似
+					oList[i].onclick = function () {
+						change(i);
+					}
+				}(i);//此i是实参
+			}
+			
+//			
+//			for (var i = 0;i < oList.length; i++){
+//				oList[i].onclick = (function (i) {
+//					return function() {
+//						change(i);
+//					}
+//				})(i);
+//			}
+//			ES6     此代码是在上面闭包基础上优化的
+//			for (let i = 0;i < oList.length; i++){
+//				oList[i].onclick = function () {
+//					change(i);
+//				}
+//			}
+		</script>
+	</body>
+</html>

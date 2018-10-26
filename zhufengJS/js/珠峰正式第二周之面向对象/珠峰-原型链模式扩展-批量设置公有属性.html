@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>批量设置原型上的公有属性和方法</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//1、起别名
+//			function Fn(){
+//				this.x = 100;
+//				
+//			}
+//			pro.getX = function(){
+//				
+//			}
+//			pro.getY = function(){
+//				
+//			}
+//			var pro = Fn.prototype;//把原来原型指向的地址赋值给pro，现在它们操作的是同一个内存空间   Jquery就是这种思想
+		    //2、重构原型对象的方式 ->自己开辟一个新的堆内存，存储我们公有的属性和方法，把浏览器原来给Fn.prototype开辟的那个替换掉
+  			function Fn(){
+  				this.x = 100;
+  			}
+			Fn.prototype = {
+				a:function(){
+					
+				},
+				b:function(){
+					
+				}
+			};
+			var f = new Fn;
+			console.log(f.constructor);//Object() { [native code] }
+		</script>
+	</body>
+</html>

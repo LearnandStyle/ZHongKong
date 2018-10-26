@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 ++i和i++ 都是自行加一 在和其他的值进行运算的时候是有区别的
+			 var i = 5;
+			 console.log(1+ i++);
+			 i++  值先运行后加一
+			 ++i 先累加后运算
+			 
+			 
+			 //思考题：用闭包作用域的方式实现选项卡循环绑定事件的处理
+			 
+			 * */
+			function fn(){
+				var i = 10;
+				return function(n){
+					console.log(n+(++i));
+				}
+			}
+			var f = fn();
+			f(10);//21
+			f(20);//32
+			fn()(10);//21                                                                                                                            
+			fn()(20)//31
+//			
+//			
+			function fn(i){
+				return function(n){
+					console.log(n+i++);
+				}
+			}
+			var f = fn(13);
+			f(12);//25
+			f(14);//28
+			fn(15)(12)//27
+			fn(16)(13)//29
+		</script>
+	</body>
+</html>

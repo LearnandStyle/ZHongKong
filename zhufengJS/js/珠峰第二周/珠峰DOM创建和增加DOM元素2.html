@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.box{
+			margin: 10px;
+			background: red;
+			height: 20px;
+			width: 20px;
+			
+		}
+	</style>
+	<body>
+		<div id="box2" class="box">2</div>
+		<script type="text/javascript">
+			/*
+			
+			真实项目中，偶尔会在js中动态创建一些HTML标签，然后会把其增加到页面中
+			document.creatElement JS中动态创建一个HTML标签
+			appendChild
+			容器.appendChild（新元素）  把当前创建的新元素添加到容器末尾
+			
+			insertBefore
+			容器.insertBefore（新元素）  在当前容器中，把新创建的元素增加到老元素之前
+			
+			
+			真实项目中很多需求都是通过动态创建元素来完成的，其中有一个需求：解析URL地址的每一部分的信息（包含问号传递的参数值）
+			1、纯字符串拆分截取  2、编写强大的正则，捕获到需要的结果  3、通过动态创建a标签和一些内置的属性来分别获取每一部分的内容
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			 
+			  */
+			 
+//			 var oDiv = document.createElement('div');
+//			 oDiv.id = 'div1';
+//			 oDiv.className = 'box';
+//			 oDiv.innerHTML = '1';
+//			 document.body.appendChild(oDiv);
+//			 document.body.insertBefore(oDiv,box2)
+			 var link = document.createElement('a');
+			   link.href = 'http://www.zhufengpeixun.cn/stu/?name=zxt&age=27&sex=0#teacher';//地址就是要解析的url
+			  
+			 
+			 console.dir(link)
+			//->hash:存储了哈希值 '#teacher'
+			//->hostname:存储域名'www.zhufengpeixun.cn'
+			//->pathname:存储请求资源的路径 '/stu/'
+			//->protocol:存储协议 'http：'
+			//->search:存储问号传递参数值  '?name=zxt&age=27&sex=0'
+			
+			
+			
+
+
+			 
+		</script>
+	</body>
+</html>

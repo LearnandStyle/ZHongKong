@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>中间类继承法   -  适合移动端</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//去掉最高值、最低值求平均值
+			//1、
+//			function avgFn(){
+////				var ary = Array.prototype.slice.call(arguments)
+//				Array.prototype.sort.call(arguments,function(a,b){
+//					return a-b;
+//				});
+//				Array.prototype.pop.call(arguments);
+//				Array.prototype.shift.call(arguments);
+//				return(eval( Array.prototype.join.call(arguments,'+'))/arguments.length).toFixed(2) //toFixed(2)指定两位小数 
+//				
+//			}
+//			console.log(avgFn(10,20,30,40,40,40))
+
+
+			//2、不兼容IE  
+			//arguments是类数组 特点1 2  多个li同时获取得到的是类数组   arguments是类数组
+			//多个li用getElementsByTagName('li')获取时得到的是类数组;
+			//1、以数字作为属性名属性存储的是li 在js中数字叫做‘索引’ 索引是逐级递增的
+			//2、有一个属性length存储的是当前集合li的个数   
+			//里面的li都是对象typeof newsList[0] "object"
+			function avgFn(){
+				arguments.__proto__=Array.prototype;
+				arguments.sort(function(a,b){
+					return a-b;
+				})
+				arguments.pop();
+				arguments.shift();
+				return  eval(arguments.join("+"))/arguments.length;    
+				//eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码。
+			}
+			console.log(avgFn(10,20,30,40,40,40))
+			
+			
+		</script>
+	</body>
+</html>

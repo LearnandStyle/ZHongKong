@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+//			var ary = [1, 2, 3, 2, 2, 3, 1, 2, 2, 2, 3, 1, 1, 1, 1]
+//			for(var i = 0; i < ary.length - 1; i++) {
+//				var cur = ary[i];
+//				for(var j = i + 1; j < ary.length; j++) {
+//					if(cur === ary[j]) {
+//						ary.splice(j, 1);
+//						j--;
+//						/*数组塌陷问题：原因是我们使用splice删除数组中的某一项后，删除这项后后面的索引都要向前进一位（在原有得索引上减一）
+//						     * 此时如果我们++，循环操作的值累加了，我们通过最新的j获取的元素不是紧挨着删除这项的元素，而是跳过这一项获取的元素
+//						     * 先让j--，然后j++相当于没有加减，此时j还是原有的索引，再获取的时候就是删除这一项后面紧挨着的这一项
+//						 
+//						*/
+//					}
+//				}
+//
+//			}
+//			console.log(ary)
+
+			var ary = [1, 2, 3, 2, 2, 3, 1, 2, 2, 2, 3, 1, 1, 1, 1]
+			for(var i = 0; i < ary.length - 1; i++) {
+				var cur = ary[i];
+				for(var j = i + 1; j < ary.length;) {
+//					if(cur === ary[j]) {
+//						ary.splice(j, 1);
+//					} else{
+//						j++;
+//					}
+				cur === ary[j] ? ary.splice(j, 1) :	j++;
+				}
+			}
+			console.log(ary)//
+		</script>
+	</body>
+
+</html>

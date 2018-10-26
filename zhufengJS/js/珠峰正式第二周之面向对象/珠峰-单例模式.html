@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//js的数据类型    引用数据类型object和function
+			var name = '珠峰';
+			var age = 18;
+			var name = '周易';
+			var age = 20;
+			console.log(name,age)//周易 20 被覆盖啦
+			var person1 = {
+				 name : '珠峰',
+				 age :18
+			}
+			var person2 = {
+				 name : '周易',
+				 age : 20
+			}
+			/*对象数据类型的作用：把描述同一个事物（同一个对象）的属性和方法放在同一个内存空间下，起到了分组的作用，
+			            这样不同事物之间的属性即使属性名相同，相互间也不冲突
+			       这种编写代码模式叫做"单例模式"
+			在单例模式中把person1或者person2叫做命名空间
+			
+			
+			单例模式是项目中经常使用的模式，因为项目中可以用单例模式进行“模块化开发”；
+			模块化开发：对于一个相对比较大的项目，需要很多人协作开发的，会根据当前项目的需求吧项目划分为几个功能模块，每个人负责一部分，同时开发，最后把所有的部分合并
+			
+			
+			
+			
+			
+			
+			
+			*/
+			//单例化 模块化开发
+			//公共模块 
+			var utils = {
+				select:function(){
+					
+				}
+			}
+			
+			//选项卡切换
+			var tabRender={
+				change:function(){
+					utils.select();//在自己的命名空间下调用其他命名空间的方法
+				}
+			
+			}
+			//搜索模块change->搜索内容变化处理的
+			var searchRender ={
+				change:function(){
+					utils.select();
+					this.clickEven();//在自己的命名空间下调用自己命名空间的方法
+					
+				},
+				clickEven:function(){
+					
+				}
+			}
+			
+		</script>
+	</body>
+</html>

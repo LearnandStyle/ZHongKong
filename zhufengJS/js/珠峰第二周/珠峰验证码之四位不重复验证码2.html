@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+			font-size: 14px;
+		}
+		
+		#codeBox {
+			margin: 20px auto;
+			width: 200px;
+			height: 50px;
+			border: 1px solid black;
+			line-height: 50px;
+			text-align: center;
+			letter-spacing: 5px;
+			cursor: pointer;
+			-moz-user-select: none;
+			-webkit-user-select: none;
+		}
+	</style>
+
+	<body>
+		<div id="codeBox">Ab3F</div>
+		<script type="text/javascript">
+			/*
+			 * 真实项目中的验证码一般是后台处理的 后台返回给客户端展示的是一个图片（图片中包含了验证码）
+			 * 形式：字母+数字
+			 * 2、问题      3、12306 选择图片  4、成语填空   5、图片拼图  6、滑动拖拽
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 
+			 * */
+
+			//函数的封装
+			var codeBox = document.getElementById('codeBox');
+			function queryCode() {
+				var result = '',
+					areStr = '0123456789qwertyuiopasdfghjklzxcvbbnmQWERTYUIOPASDFGHJKLZXCVBBNM';
+				for(var i = 0; i < 4; i++) {
+					var ran = Math.round(Math.random() * 61),
+					char = areStr[ran];
+  					// =>验证一下新获取的char字符是否已经在result中存在了，如果存在不存储，重新获取一次，反之才累加到result中
+  					//大小写也不能存储 a和A
+  					if(result.indexOf(char)>-1){
+  						i--;
+  						continue;
+  					}
+  					else if(result.toLowerCase().indexOf(char.toLocaleLowerCase())>-1){
+  						i--;
+  						continue;
+  					}
+  					result += char;
+				}
+				codeBox.innerHTML = result;
+			}
+			queryCode();
+			codeBox.onclick = queryCode;
+		</script>
+
+	</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.box{
+			margin: 10px;
+			background: red;
+			height: 20px;
+			width: 20px;
+			
+		}
+	</style>
+	<body>
+		<!--div.box#box${$}*2-->
+		<div class="box" id="box1">1</div>
+		<div class="box" id="box2">2</div>
+		
+		<script type="text/javascript">
+			/*
+			 removeChild
+			  容器.moveChild(元素)；在当前容器中某一个元素移除掉
+			  
+			 replaceChild
+			 容器.replaceChild（新元素，老元素）
+			 在当前容器中，拿新元素替换老元素
+			 
+			 
+			 cloneNode
+			 元素.cloneNode(false/true)
+			 把原有的元素克隆一份一模一样的，flase：只克隆当前元素本身；true：深度克隆，把当前元素本身以及元素的所有后代都可以进行克隆
+			 
+			 
+			 
+			 [set/get/remove]Attribute
+			 给当前元素设置/获取/移除 属性（一般操作的都是他的自定义属性）
+			 box.setAttribute('myIndex',0)
+			 box.getAttribute('myIndex')
+			 box.removeAttribute('myIndex')
+			 使用xxx.index=0和xxx.setAttribute('index',0)这两种设置自定义属性的区别？
+			 xxx.index:把当前操作的元素当做一个普通的对象，为其设置一个属性名（和页面中的html标签没有关系）
+			 xxx.setAttribute:把元素当做特殊的元素对象来处理，设置自定义属性是和页面结构中的DOM元素映射在一起的
+			 JS中获取的元素对象，可以把它理解为两种角色：
+			 1、与页面HTML结构无关的普通对象
+			 2、与页面HTML结构存在映射关系的元素对象
+			 
+			 元素对象中的内置属性，大部分都和页面的标签存在映射关系：
+			 xxx.style,backgroundColor = 'xxx'此时不仅把js中对此昂对应的属性值改变了，而且也会映射到页面的HTML标签上（标签中有一个style行内样式，元素的样式改变了）
+			 xxx.className = 'xxx' 此时不仅是把js对象中的
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			*/
+			
+			var box1 = document.getElementById('box1'),
+			    box2 = document.getElementById('box2');
+			//document.body.removeChild(box1);
+			//box1.parentNode.removeChild(box1);两个都能移除
+//			var box3 = box2.cloneNode();
+//			document.body.appendChild(box3);//-><div class="box" id="box2"></div>
+//			var box4 = box2.cloneNode(true);
+//			document.body.appendChild(box4);//-><div class="box" id="box2">2</div>
+			
+			
+//			box2.onclick = function(){
+//				alert(222)
+//			}
+//			var box3 = box2.cloneNode(true);document.body.appendChild(box3)/*<div class=​"box" id=​"box2">​2​</div>只能克隆结构，不能克隆事件*/​
+		
+			
+		   
+		
+		
+		//box2.index = 0 ->0   box2.index ->0
+		//box2.setAttribute('index',100)  ->结果:undefined  dom结构添加<div class="box" id="box2" index="100">2</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		</script>
+	</body>
+</html>

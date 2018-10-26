@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			var ary = [12,15,14,13,16,11];
+			/*快速排序  
+			1、先找中间的那一项 14
+			2、把剩余项的每个值和中间项进行比较，比他小的放到左边的数组，比他大的放在右边
+			4、重复进行
+			*/
+			function quick(ary){
+				if(ary.length<=1){//判断传递的数组长度小于等于1的时候不拆分
+					return ary;
+				}
+				
+				//获取中间项的索引：把中间项的值获取到，在原有数组中删除中间项
+				var centerIndex = Math.floor(ary.length/2),
+					centerValue = ary.splice(centerIndex,1)[0];//splice返回的数组，数组中包含了删除的内容
+				//->用剩余数组中的每一项和数组中的中间项比较，比中间项大的放右边，小的放左边；
+				var aryLeft = [],
+				    aryRight = [];
+				for(var i= 0;i<ary.length;i++){
+					var cur = ary[i];
+					cur<centerValue?aryLeft.push(cur):aryRight.push(cur);
+				}
+				return quick(aryLeft).concat(centerValue,quick(aryRight));
+			}
+			console.log(quick([12,15,14,13,16,11]))
+		</script>
+	</body>
+</html>

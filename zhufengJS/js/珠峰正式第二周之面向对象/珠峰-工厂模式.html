@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			var jsPerson1 = {
+				name:'珠峰',
+				age:46,
+				writeJs:function(){
+					console.log('my name is'+this.name+'i can write js lala')
+				}
+			}
+			var jsPerson2 = {
+				name:'青鸟',
+				age:10,
+				writeJs:function(){
+					console.log('my name is'+this.name+'i can write js lala')
+				}
+			}
+			
+			//批量生产
+			var creatJsPerson(name,age){
+				var obj = {};
+				obj.name = name;
+				obj.age = age;
+				obj.writeJs = function(){
+					console.log('my name is'+this.name+'i can write js lala')
+				};
+				return obj;
+			};
+			var p1 = creatJsPerson('张三',40);
+			var p2 = creatJsPerson('李四',12);
+			
+			
+			/*
+			 单例模式虽然解决了分组的作用，但是不能实现批量的生产，属于手工作业模式->'工厂模式'
+			 
+			 工厂模式：把实现同一件事情的相同代码放到一个函数中，以后如果要实现这个功能，不需要重新写代码，只要执行当前的函数即可 ->'函数的封装'
+			 -->“低耦合高内聚”：减少页面冗余代码，提高代码重复利用率
+			 
+			 
+			 js是一门轻量级的脚本“编程语言”（HTML+CSS不属于编程语言，属于标记语言）
+			 //.net C# php Java c++ vb vf pathon object-c  js~~~
+			 所有的编程语言，都是面向对象来开发的 ->类的继承、封装、多态
+			 
+			 
+			 
+			 继承：子类继承父类中的属性和方法
+			 多态：当前方法的多种形态   
+			 后台语言中：多态包含 重载和重写
+			 重载：方法名通参数值和个数不同
+			 
+			 
+			 
+			JS中不存在重载：方法名一样时,后面的把第一个覆盖了
+			重写：子类重写父类的方法
+			 
+			 
+			“JS中有一个操作类似重载但是不是重载”：根据传递的参数不一样， 实现不同的功能
+			 function sum(num){
+			 	if(typeof num ==='undefined'){
+			 		return  0;
+			 	}
+			 	return num;
+			 }
+			 sum(100);
+			 sum();
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 * */
+			
+//			public_void sum(int_num1,int_num2){
+//				
+//			}
+//			public_void sum(String_num1,int_num2){
+//				
+//			}
+//			sun(1)//执行第一个
+//			sun('1')//执行第二个
+//			
+
+
+
+//			
+//			function sum(num1,num2){
+//				
+//			}
+//			function sum(num1){
+//				
+//			}
+//			sum(1) 
+//			sum(1,2)
+			//执行的都是第二个sum 把第一个覆盖了，JS不存在重载
+			
+			
+			
+		</script>
+	</body>
+</html>

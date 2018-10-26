@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript">
+		/*indexOf/lastIndexOf:获取当前项在数组中第一次出现或者最后一次出现位置的索引
+		在数组中这两个方法在IE6~IE8不兼容
+		字符串中这两个方法兼容所有浏览器
+		如果当前数组中并没有这一项，返回的索引是-1，用来验证数组中是否包含该项
+		
+		*/
+		if(ary.indexOf(12)>-1){
+			//数组中包含12
+			
+		}
+		Array.prototype.myIndexOf = function myIndexOf(value){
+			var result = -1;
+			for(var i=0;i<this.length;i++){
+				if(value===this[i]){
+					result = i;
+					break;
+				}
+			}
+			return result;
+		}
+		
+	</script>
+</html>

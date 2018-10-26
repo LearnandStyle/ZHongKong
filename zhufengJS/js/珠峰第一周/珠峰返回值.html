@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function sum() {
+				var total = null;
+				for (var i = 0;i < arguments.length; i++) {
+					var cur = Number (arguments[i]);
+					!isNaN(cur) ? total += cur :null;
+				}
+				console.log(total);
+				return total;//return后面返回的都是值 此处返回的不是total变量，返回的是total存储的值     return对象返回的是对象
+			}
+			sum(10,20,30);
+			console.log(total);//total is not defined  因为闭包的保护机制导致私有作用域会保护里面的私有变量
+			//返回值是函数提供的出口，如果想在函数外面调用函数的私有信息通过return返回值
+			console.log(sum(10,20,30));
+			
+			//sum代表的是函数本身   sum()让函数执行，代表的是当前函数返回的结果  return 后面是什么相当于返回的是什么
+		</script>
+	</body>
+</html>

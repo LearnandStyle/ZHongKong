@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+			.hover{
+				background: lightblue;
+			}
+	</style>
+	<body>
+		<div>
+			<ul id='newsBox'>
+				<li>111111111</li>
+				<li>111111111</li>
+				<li>111111111</li>
+				<li>111111111</li>
+				<li>111111111</li>
+				<li>111111111</li>
+				<li>111111111</li>
+				<li>111111111</li>
+				<li>111111111</li>
+				<li>111111111</li>
+				<li>111111111</li>
+			</ul>
+		</div>
+		<script type="text/javascript">
+		var newsBox = document.getElementById('newsBox')
+		var newsList = newsBox.getElementsByTagName('li');
+//		for(var i=0;i<newsList.length;i++){
+////			i=0;第一次循环  newsList[0]    i=1  ;第二次循环newsList[1]
+//			if(i % 2 === 1){
+//			   newsList[i].style.backgroundColor = "yellowgreen";
+//			}
+//
+//		}
+		console.log(newsList)//[li, li, li, li, li, li, li, li, li, li, li] 0:li 1:li 2:li 3:li ... length:11
+		//1、输出的结果是对象数据类型的值 以数字作为属性名属性存储的是li 在js中数字叫做‘索引’ 索引是逐级递增的   /2、有一个属性length存储的是当前集合li的个数   具备以上两个特点的特别像数组但是不是数组叫做‘类数组’ 里面的li都是对象typeof newsList[0] "object"
+//		newsList[i]索引是i-1
+//使用自定义属性来解决
+
+			
+		</script>
+	</body>
+</html>

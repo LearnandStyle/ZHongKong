@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*string中常用的方法 
+			在js当中用单引号或双引号裹起来的都是字符串
+			var str='welcome to beijing';
+			特点：1、
+			字符串就是有零到多个字符组成的
+			第一个字符索引是0     第二个字符索引是1 ... 以数字作为索引，从0开始
+			str[0] ->'w'
+		    2、有一个length的属性，存储的是当前字符串中字符的个数（字符串的长度）
+		    str.length ->18  空格也是字符的长度内容
+		    str(str.length-1) ->'g' 最后一个字符
+		    str[100] ->undefined  如果指定的索引不存在获取的结果是undefined
+		   	 真实项目中经常操作字符串  ，此时我们需要掌握常用的字符串的方法  console.dir(String.prototype)
+		    
+		    
+		    charAt &&charCodeAt
+		    str.charAt(0) ->'w'
+			[str].charAt:返回指定索引位置的字符，和str【索引】的区别是当指定的索引不存在的时候,中括号的方式获取的是undefined而charAt返回的是空字符串''
+			str.charCodeAt[索引]：在charAt基础上，把获取的字符变成Unicode编码值（对应ASCⅡ码表）
+			48~57  :数字0~9
+			65~90  :A~Z
+			97~122 :a~z
+		    str.charCodeAt(0) ->119
+		    String.fromCharCode(119) ->'w';   String.fromCharCode(十进制的Unicode值) ：把值转换成原有的字符
+		    
+		    substr  &&  substring &&  slice  都是实现字符串截取的三个方法
+		    str.substr(n,m)  从n开始，截取m个
+		    str.substring(n,m):从索引n开始，截取到索引为m处（不包含m)，把找到的部分截取
+		    str.slice(n,m):和sunstring语法一样，区别在于slice支持以负数做索引
+		    str.substr(3,7)  - >"come to"
+		    str.substring(3,7)  ->'come'     str.substring(-7,-3)  ->''
+		    str.slice(3,7)  ->'come'         str.slice(-7,-3)   ->"beij"  ==》   str.slice(str.length-7,str.length-3) ->"beij"
+		    
+		            当索引是负数的时候，浏览器在处理的时候，是用字符串的总长度加上负数索引，然后按照正数处理操作
+		     //
+		            细节：
+		        1、如果只传递了n  （str.subStr(n)/str.substring(n)）相当于从索引n开始截取到字符串末尾。
+		        2、如果传递的索引超出最大限制，也是把能截取的部分截取掉即可
+		        3、一个参数都不传，相当于把整个字符串都截取（字符串的克隆）
+		        
+			
+			
+			
+			toUpperCase &&  toLowerCase
+			str.toUpperCase  把字母全部大写     toLowerCase   把字母全部小写
+			
+			
+			
+			indexOf  && lastIndexOf
+			str.indexOf:获取当前字符在字符串中第一次出现的索引  str.indexOf('i') ->13
+			str.lastIndexOf:获取当前字符在字符串中最后一次出现的索引    str.lastIndexOf('i')  ->15
+			如果当前字符在字符串中没有出现过，结果是-1.。可以以此规律来验证当前字符串中是否包含某字符
+			应用：if(str.indexOf('?') === -1){
+				//没有出现过
+			}
+			if(str.indexOf('?') >= 0){
+				//出现过
+			}
+			
+			split
+			str.split():按照某一个字符把字符串拆分成数组中的某一项，和数组中的join方法是对应的
+			var hobbyList='music|movie|eat|';
+			hobbyList.split('|')  -> ["music", "movie", "eat",""]
+			hobbyList.split('@')  -> ["music|movie|eat"]//把整体当做第一项
+			
+			var str2 ='name=zhufeng&age=8';
+			str2.split(/=|&/g)   ->["name", "zhufeng", "age", "8"]  split支持正则拆分
+			
+			str.split('')  ->["w", "e", "l", "c", "o", "m", "e", " ", "t", "o", " ", "b", "e", "i", "j", "i", "n", "g"]//空字符串
+			str.split()  ->["welcome to beijing"]
+			
+			
+			
+			
+			
+			var ary = [12,23,34];
+			ary.join('+');"12+23+34";
+			"12+23+34".split('+') -> ['12','23','34']
+			
+			
+			
+			
+			
+			replace
+			str.replce()字符替换  执行一次只能替换一次，如果有好几个都要提换，在不使用正则 情况下需要执行很多次replace
+			
+			var str ='zhufeng2017zhufeng2018'  
+			str.replace('zhufeng','珠峰')    -> "珠峰2017zhufeng2018"
+			str=str.replace('zhufeng','珠峰')  str=str.replace('zhufeng','珠峰')  -》 "珠峰2017珠峰2018"
+			
+			var str ='zhufeng2017zhufeng2018'  
+			str=str.replace(/zhufeng/g,'zhufengpeixun')   ->"zhufengpeixun2017zhufengpeixun2018"
+			有些需求即使执行很多次replace也实现不了，此时需要用正则处理，真实项目中replace一般和正则搭配使用
+			
+			
+			trim && trimLeft  && trimRight
+			str.trimLeft:去除字符串开始的空格    
+			str.trimRight:去除字符串结尾的空格    
+			str.trim:去除字符串首尾的空格    
+			var str = '    zhu  feng  '
+			str.trimLeft()  -》 "zhu  feng  "
+			str.trimRight() -》 "    zhu  feng"
+			str.trim()  -》 "zhu  feng"
+			
+			
+			
+			*/
+		</script>
+	</body>
+</html>

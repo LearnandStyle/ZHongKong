@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		.box{
+			margin: 10px;
+			background: red;
+			height: 20px;
+			width: 20px;
+			
+		}
+	</style>
+	<body>
+		<div id="box2" class="box">2</div>
+		<script type="text/javascript">
+			/*
+			
+			真实项目中，偶尔会在js中动态创建一些HTML标签，然后会把其增加到页面中
+			document.creatElement JS中动态创建一个HTML标签
+			appendChild
+			容器.appendChild（新元素）  把当前创建的新元素添加到容器末尾
+			
+			insertBefore
+			容器.insertBefore（新元素）  在当前容器中，把新创建的元素增加到老元素之前
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			 
+			  */
+			 
+			 var oDiv = document.createElement('div');
+			 oDiv.id = 'div1';
+			 oDiv.className = 'box';
+			 oDiv.innerHTML = '1';
+			 document.body.appendChild(oDiv);
+			 document.body.insertBefore(oDiv,box2)
+
+
+
+
+
+			 
+		</script>
+	</body>
+</html>

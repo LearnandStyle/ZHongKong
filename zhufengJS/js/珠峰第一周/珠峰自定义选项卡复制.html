@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+		}
+		
+		ul {
+			list-style: none;
+		}
+		
+		.tabBox {
+			width: 500px;
+			margin: 20px auto;
+		}
+		
+		.tabBox ul {
+			overflow: hidden;
+			position: relative;
+			top: 1px;
+		}
+		/*.tabBox ul:after {
+			display: block;
+			content:'';
+			clear: both;
+		}*/
+		
+		.tabBox ul li {
+			padding: 0 10px;
+			float: left;
+			margin-right: 10px;
+			height: 35px;
+			line-height: 35px;
+			border: 2px solid #999;
+			background: #ccc;
+			cursor: pointer;
+		}
+		
+		.tabBox ul li.select {
+			background: #fff;
+			border-bottom-color: #fff;
+		}
+		
+		.tabBox div {
+			height: 140px;
+			line-height: 150px;
+			text-align: center;
+			border: 1px solid #ccc;
+			display: none;
+		}
+		
+		.tabBox div.select {
+			display: block;
+		}
+	</style>
+
+	<body>
+		<div class="tabBox" id='tabBox'>
+			<ul>
+				<li class="select">新闻</li>
+				<li>电影</li>
+				<li>音乐</li>
+			</ul>
+			<div class="select">热烈庆祝中国召开19大</div>
+			<div>秀秀的铁拳</div>
+			<div>毛不易--消愁</div>
+		</div>
+		<a href=""></a>
+		<script type="text/javascript">
+			/*需求分析：点击哪一个Li 就让其有select这个类，其余的li（div）都把select样式类移除即可
+						 不管点击哪一个li，我们首先让所有的li（div）都移除这个类，当期那点击的添加这个类
+						 * 
+						 * 
+						 * 
+						 * */
+
+			var tabBox = document.getElementById('tabBox'),
+				oList = tabBox.getElementsByTagName('li'),
+				oDivList = tabBox.getElementsByTagName('div');
+
+//			for(var i = 0; i < oList.length; i++) {
+//				oList[i].myIndex = i;
+//				oList[i].onclick = function() {
+//					for(j = 0; j < oList.length; j++) {
+//						oList[j].className = oDivList[j].className = null;
+//					}
+//					this.className = oDivList[this.myIndex].className = 'select';
+//				}
+//
+//			}
+
+			var preIndex = 0;//=>pre  previous 存储的是上一个被选中的li的索引（默认页面选中的是第一个，所以设置的初始值为0
+			for(var i = 0; i < oList.length; i++) {
+				oList[i].currentIndex = i;//分别给每一个li设置一个自定义属性来存储当前li的索引
+				oList[i].onclick = function() {
+					if(this.currentIndex === preIndex) {
+						return;//当前点击的这个Li和上一次点击的li是同一个，此时我们不需要做页卡切换，在函数中遇到return函数代码不执行
+					}
+//					//1、先清除上一个选中li的样式
+					oList[preIndex].className = oDivList[preIndex].className = null;
+					//2、再让当前点击的li有选中的样式
+					this.className = oDivList[this.currentIndex].className = 'select';
+					//3、让preIndex的值重新修改当前li的索引，这样在下一次点击的时候，当前选中的这个才是下一次点击要清除的上一个li
+					preIndex = this.currentIndex;//注意是this.currentIndex
+				}
+//
+			}
+		</script>
+	</body>
+
+</html>

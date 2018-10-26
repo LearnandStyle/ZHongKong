@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			font-size: 20px;
+			
+		}
+		.box{
+			margin: 20px auto;
+			width: 500px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			border: 1px solid green;
+		}
+		.box span{
+			color: red;
+			font-weight: bold;
+		}
+	</style>
+	<body>
+		<div class="box">距离考试还剩：<span id="timeBox">00天:00小时:00分钟:00秒</span></div>
+		<script type="text/javascript">
+			var timBox = document.getElementById('timeBox');
+			function computed(){
+				var nowTime = new Date(),
+				targetTime = new Date('2018/10/22 17:00:00');
+				var spanTime = targetTime - nowTime;//获取的是两个时间的毫秒差
+				if(spanTime <= 0){
+					//->已经到达考试时间：此时可以提示开始考试
+					timBox.innerHTML = '抢购开始'
+					window.clearInterval(timer);
+					return;
+				}
+				if(spanTime>0){//未到达考试时间 在总毫秒差中计算还有多少小时、分钟、秒
+					var day = Math.floor(spanTime/(1000*60*60*24));
+					spanTime -=day*1000*60*60*24;
+					var hour = Math.floor(spanTime/(1000*60*60));
+					spanTime -= hour*60*60*1000;//把小时占据的毫秒数去除掉，剩下的值中计算还有多少分钟
+					
+					var minute  =Math.floor(spanTime/(1000*60));
+					spanTime-=minute*60*1000;
+					var second = Math.floor(spanTime/1000);
+					//不足十位补零
+					day<10?day='0'+day:null;
+					hour<10?hour='0'+hour:null;
+					minute<10?minute='0'+minute:null;
+					second<10?second='0'+second:null;
+					
+					timeBox.innerHTML = day+'天:'+hour+'小时:'+minute+'分钟:'+second+'秒';
+				}
+				
+			}
+			computed();
+//			=>以后每隔1s都开启定时器
+			var timer = window.setInterval(computed,1000)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*
+			 全局作用域中，带var和不带var的关系
+			 区别：带var的可以进行预解释，所以在赋值的前面执行不会报错；不带var的是不能进行预解释的，在前面执行会报错
+			关系：num2 = 12 ->相当于给window增加了一个叫做num2的属性名，属性值是12
+			var num =12 ->首先它相当于给全局作用域增加了一个全局变量num，但是不仅如此，它也相当于给window增加了一个属性名num，属性值12
+			 
+			 在私有作用域中，代码执行的时候遇到了一个变量 ，首先确定它是否为私有的变量，若是私有变量，和外面的没有任何关系；如果不是私有的则往上级作用域查找，
+			      如果上级作用域中也没有，则向他的上级继续查找，知道找到window为止,如果window也没有呢？
+			    console.log（total） -> 报错了
+			    设置total = 100；->相当于给window增加了属性名total，属性值是100
+			 
+			 
+			 */
+			console.log(num);//undefined
+			var num = 12;
+//			console.log(num2);//Uncaught ReferenceError: num2 is not defined
+//			num2 = 12;
+			
+			
+//			var total = 0;
+//			function fn(){
+//				console.log(total);//undefined
+//				var total = 100;
+//				
+//			}
+//			fn();
+//			console.log(total);//0
+			
+			
+	
+			function fn(){
+//				console.log(total2);//undefined
+				 total2 = 100;
+			}
+			fn();
+			console.log(total2);//100
+			
+			//JS中如果在不进行任何特殊处理的情况下，上面的代码报错，下面的不执行
+		</script>
+	</body>
+</html>

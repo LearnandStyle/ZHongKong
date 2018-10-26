@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数中的形参和实参</title>
+	</head>
+	<body>
+		<script>
+			function sum () {
+				console.log(arguments.callee);//ƒ sum () {console.log(arguments.callee);}
+				console.log(arguments.callee.caller) //null
+			}
+			sum()
+//			sum(1,2,3,'珠峰',{name:'珠峰'});
+			
+			function fn () {
+			    sum (10,20)
+			    
+			}
+			fn();;//ƒ sum () {console.log(arguments.callee);console.log(arguments.callee.caller) }       
+			    // ƒ fn () { sum (10,20)}
+			
+			
+			//arguments  实参集合
+			//当我们不知道用户具体要传递几个值的时候(传递几个值都可以),此时我们无法设置形参的个数:遇到此类需求,需要使用函数内置的实参集合:arguments
+			//1、arguments只有函数才有 2、不管执行函数是否传递实参 arguments天生就存在，没有传递实参ARG是个空的集合，传递了ARG中包含了所有存在的实参值
+			//3、不管是否设置了形参，ARG中适中存储了所有的实参信息
+//			arguments是一个类数组集合   1、以数字为索引(属性名)从0开始 arguments[0]第一个实参信息 arguments[1]是第二个实参信息 arguments[n]是第n+1个实参信息  
+			//2、有一个length属性，存储的是当前几个的长度（当前传递的实参个数） 和getElementByTagment（li）获得的结果相同，类数组
+			//  arguments比一般类数组多的属性  arguments.callee(存储的是当前函数本身)  
+			//arguments.callee.caller存储的是当前函数在哪执行（宿主函数）。在全局作用域下执行的结果是null  argument.callee和argument.caller一般情况下很少使用，因为在严格模式下不允许使用这两种使用，现有项目大都在严格模式
+			
+			
+//			'use strict';
+//			function sum () {
+//				console.log(arguments.callee);
+//				console.log(arguments.callee.caller)
+//			}
+//			sum()
+//			//Uncaught TypeError: 'caller', 'callee', and 'arguments' properties may not be accessed on strict mode functions or the arguments objects for calls to them
+//  		//严格模式下报错
+			
+			
+			
+			//任意数求和 考试必考  用的argument
+			function sum2 () {
+				var total = null;
+				for(var i = 0;i < arguments.length;i++){
+					var cur = arguments[i];//每一轮=循环获取当前传递的那个实参值
+					//为了防止字符串+数字是字符串的拼接儿不是数学的累加，最好把其他数据的类型转化为number类型
+					cur = Number(cur);
+					//为了防止传递的是非有效数字（数字+NaN=NaN），最好做一下非有效数字的检测，有效数字才能进行累加
+//					if (isNaN(cur) === false) {
+//						total += cur;
+//					}
+					!isNaN(cur) ? total += cur : null;
+				}
+				console.log(total);
+			}
+			 sum2 (10,20,30);//60
+			 sum2 ();//null
+			 sum2 (10,20,'30');//60
+			 sum2 (10,20,30,'zhufeng');//60
+		</script>
+	</body>
+</html>

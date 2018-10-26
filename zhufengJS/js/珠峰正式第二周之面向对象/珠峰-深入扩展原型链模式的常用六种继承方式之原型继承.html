@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1"></div>
+		
+		<script type="text/javascript">
+//			Object.prototype.aaa = function(){
+//				var obj = {name:'珠峰',age:7};
+//				for(var key in obj){
+//					//for in 循环遍历的时候，默认的话可以把自己私有的和在他所属类原型上扩展的方法和属性都可以遍历到
+//				  if(obj.propertyIsEnumerable(key)){
+//				  	console.log(key)//只遍历私有属性
+//				  }
+//				}
+//			}
+			
+			/*
+			 1、原型继承  最重要的一种继承  是js中最常用的一种方式，子类B想要继承A中的所有的方法和属性（公有+私有），只要让B.prototype = new A 即可
+			  #div1.__protot__->div的内置类原型链关系HTMLDivElement、  HTMLElement、Element、 Node、EventTarget、   Object
+			  HTMLDivElement.prototype->HTMLElement.prototype->Element.prototype->
+			  Node.prototype->EventTarget.prototype->Object.prototype
+			  模拟：function myObject(){
+			  	
+			  }
+			  myObject.prototype ={
+			  	constructor:Object,
+			  	hasOwnProperty:function(){}
+			  }
+			  function EventTarget(){}
+			  EventTarget.prototype = new myObject();
+			  EventTarget.prototype.addEventListener = function(){}
+			  function myNode(){}
+			  myNode.prototype = new mrEventTarget;
+			  myNode.prototype.createElement = function(){}
+			  var n = new myNode;
+			  dir(n)
+			  
+			  
+			  
+			  
+			  
+			  function A(){
+			  	this.x = 100;
+			  }
+			  A.prototype.getX = function(){
+			  	console.log(this.x);
+			  };
+			  function B(){
+			  	this.x = 200;
+			  }
+			  B.prototype = new A;
+			  B.prototype.constructor = B;
+			  原型继承的特点：它把父类中公有的+私有的都继承到了子类原型上（子类公有的）
+			  核心：原型继承并不是把父类中的属性和方法克隆一份一模一样的给B，而是让B和A之间
+			  增加了原型链的连接，以后B的实例n用A中的getX方法，需要一级一级向上查找来使用
+			  
+			  
+			  
+			  
+			  
+			  
+			 * */
+				
+		</script>
+	</body>
+</html>

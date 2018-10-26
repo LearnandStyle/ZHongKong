@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+			font-size: 14px;
+			
+		}
+		ul {
+			list-style: none;
+		}
+		.tabBox {
+			width: 500px;
+			margin: 20px auto;
+		}
+		.tabBox ul {
+			overflow: hidden;
+			position: relative;
+			top: 1px;
+		}
+		/*.tabBox ul:after {
+			display: block;
+			content:'';
+			clear: both;
+		}*/
+		.tabBox ul li {
+			padding: 0 10px;
+			float: left;
+			margin-right: 10px;
+			height: 35px;
+			line-height: 35px;
+			border: 2px solid #999;
+			background: #ccc;
+			cursor: pointer;
+		}
+		.tabBox ul li.select {
+			background: #fff;
+			border-bottom-color: #fff;
+		}
+		.tabBox div {
+			height: 140px;
+			line-height: 150px;
+			text-align: center;
+			border: 1px solid #ccc;
+			display: none;
+		}
+		.tabBox div.select {
+			display: block;
+		}
+	
+	</style>
+	<body>
+		<div class="tabBox" id='tabBox'>
+			<ul>
+				<li class="select">新闻</li>
+				<li>电影</li>
+				<li>音乐</li>
+			</ul>
+			<div class="select">热烈庆祝中国召开19大</div>
+			<div>秀秀的铁拳</div>
+			<div>毛不易--消愁</div>
+		</div>
+		<a href=""></a>
+		<script type="text/javascript">
+			/*需求分析：点击哪一个Li 就让其有select这个类，其余的li（div）都把select样式类移除即可
+			 不管点击哪一个li，我们首先让所有的li（div）都移除这个类，当期那点击的添加这个类
+			  */
+		
+			var tabBox = document.getElementById('tabBox'),
+			    oList = tabBox.getElementsByTagName('li'),
+			    oDivList = tabBox.getElementsByTagName('div');
+			/*创建一个函数实现页卡切换*/
+			function change(index){//index是函数的形参，实现方法的时候不知道用户点击的是哪一个li 设定一个入口，当用户点击需要页卡切换的时候
+//				只要执行change方法,并且把点击这个li的索引传递给我们,我们就可以在oList集合中通过索引获取到当前点击的这个li对象
+//				1、让所有的li和div移除select样式
+				for(var i=0 ; i<oList.length;i++){
+					oList[i].className = '';
+					oDivList[i].className = '';
+//					oList[i].className = oDivList[i].className = '';//或者为none
+					
+					
+				}
+//			    2、让当前点击的这个li有选中的样式	
+				oList[index].className = 'select';
+				oDivList[index].className = 'select';
+				oList[index].className = oDivList[index].className = 'select';
+//				3、
+                
+			}
+//			for(var i = 0;i < oList.length;i++){
+//				oList[i].onclick = function(){
+////					change(i)
+//					console.log(i);// =>3 不管点击的是哪一个个i输出都是3 并不是想象中想要点击的索引   i是循环结束后的那个索引
+//				
+//				}
+//			}
+//				//第一次创建
+//				oList[0].onclick = function(){
+////					change(i)
+//					'console.log(i);'//=>给元素点击事件创建方法，点击才执行 此处绑定属于创建，空间存储的都是字符串，i不是变量是字符需要点击才能
+//				}
+//				//第二次创建
+//				oList[1].onclick = function(){
+////					change(i)
+//					'console.log(i);'}
+//				//第二次创建
+//				oList[2].onclick = function(){
+////					change(i)
+//					'console.log(i);'}  结束循环i为3}
+//					假设用户开始点击第二个li:开始执行第二个绑定的方法(方法执行官形成一个新的作用于,把之前存储的字符串变成代码执行 console.log(i))
+		
+				for(var i = 0;i<oList.length;i++){
+					oList[i].myIndex = i;//自定义属性
+					oList[i].onclick = function(){
+						change(this.myIndex)//this:当前点击的这个li  this.myIndex:当前点击li的myIndex这个自定义属性的值  change（）要传递当前点击这个li做索引的值
+					
+				}
+			}
+				
+				//自定义属性思想：当我们在某一个阶段需要获取到的一些信息，但是此时不好获取这些信息我们可以在之前好获取的时候，
+				//把这些后续需要的信息存储在元素对象的某一自定义属性上，以后想用的时候直接在自定义属性上获取这些信息即可
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		</script>
+	</body>
+</html>

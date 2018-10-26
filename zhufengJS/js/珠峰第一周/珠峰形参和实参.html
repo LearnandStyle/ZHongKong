@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数中的形参和实参</title>
+	</head>
+	<body>
+		<script>
+			//形参  相当于生产洗衣机的时候提供的入口，需要用户执行函数的时候吧需要传递的值传进来 ，形参是个变量，用来存储和接收这些数值
+			//实参   用户执行的时候传递给形参的具体值
+//			需求  随便求出两个数的和
+//			function sum (num1,num2) {//num1,num2类似于var了两个变量 是行参变量
+//				var total = num1 + num2;
+//				total *= 10;
+//				total = total.toFixed(2);
+//				console.log(total);
+//			}
+//			sum(10,20);
+//			sum(10);//NaN   num1=10  num2=undefined   null+10=10定义了实参但是执行的时候没有传递实参 默认实参的值是undefined
+			
+			
+﻿			//如果有一个值没有传递的话,为了保证结果不是NaN,将其默认为0 
+			
+			function sum (num1,num2) {//num1,num2类似于var了两个变量 是行参变量
+//				if(typeof num1 === 'undefined') {//真实项目中用typeof num1 === 'undefined'
+//					num1 = 0;
+//				}
+//				if( num2 === undefined) {
+//					num2 = 0;
+//				}  //可以简写为下列   容错处理   以下两种方法都可以
+//				typeof num1 === 'undefined' ? num1 = 0 : null;
+//				typeof num2 === 'undefined' ? num2 = 0 : null;
+
+				num1 = num1 || 0;
+				num2 = num2 || 0;
+				//扩展：|| 和 &&的语法
+				
+				var total = num1 + num2;
+				total *= 10;
+				total = total.toFixed(2);
+				console.log(total);
+			}
+			sum(10)
+//			Boolean(null) == undefined(true)
+//			Boolean(null) === undefined(false)
+			
+			
+			
+			//arguments  实参集合
+			//当我们不知道用户具体要传递几个值的时候(传递几个值都可以),此时我们无法设置形参的个数:遇到此类需求,需要使用函数内置的实参集合:arguments
+			
+			
+		</script>
+	</body>
+</html>

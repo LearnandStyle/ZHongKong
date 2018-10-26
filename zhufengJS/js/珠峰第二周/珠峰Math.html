@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//typeof Math //'object'但是它是对象数据类型
+			//Math对象给我们提供了很多操作数字的方法 （dir（Math））console.dir(Math)查看所有的方法
+			//常用方法：abs ceil/floor  round random  max/min   PI   pow/sqrt
+			
+			Math.abs();//取绝对值  Math.abs(12)=Math.abs(-12)=12；
+			Math.ceil();//向上取整  Math.ceil(12) ->12 Math.ceil(12.1)=Math.ceil(12.9)=13   Math.ceil(-12.1)=Math.ceil(-12.9)=-12
+			Math.floor();//向下取整Math.floor(12)->12  Math.floor(12.1)=Math.floor(12.9)=12
+			Math.round()//四舍五入   Math.round(12.3)=Math.round(12.4)=12    正数中5包含在向上  Math.round(-12.3)=Math.round(-12.3)=-12  Math.round(-12.5)=-12 Math.round(-12.51)=-13   负数中5包含在向下  
+			Math.random();//获取[0,1）之间的随机小数  可以理解成（0,1）
+			for(var i=0;i<100;i++){
+				console.log(Math.random());
+			}
+			
+			//需求：获取0~10之间的随机整数[0,10]
+//			Math.random()*10//(0,10)
+			Math.round(Math.random()*10);
+			
+		
+		   //需求：获取[3,15]之间的随机整数
+		  	Math.round(Math.random()*12+3);
+		  	//获取[n,m]之间的随机整数
+		  	Math.round(Math.random()*(m-n)+n);
+		  	
+			
+			Math.max()//获取一组值中的最大值  Math.max(12,23,3,42,15,2,3,2267)//2267
+			Math.min()//获取一组值中的最小值Math.min(12,23,3,42,15,2,3,2267)//2
+			Math.PI//获取圆周率
+			
+			Math.pow();//获取一个值的多少次幂
+			Math.sqrt()//开平方
+		
+		
+		
+		</script>
+	</body>
+</html>

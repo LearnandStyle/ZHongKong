@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function sum() {
+				var total = null;
+				for (var i = 0;i < arguments.length; i++) {//argument取不固定参数的求和
+					var cur = Number (arguments[i]);
+					!isNaN(cur) ? total += cur :null;
+				}
+				return total;
+			}
+			var total = sum(10,20,30);//外面是全局下的total  和函数体重的total没哟必然联系
+			console.log(total);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1">有本事点我啊</div>
+		<script type="text/javascript">
+			/*
+			 在js中主要研究的是函数中的this
+			 非函数中console.log(this)  window
+			 function 吃饭（）{this->珠峰}
+			   珠峰.吃饭（）
+			 
+			 //js中的this代表的是当前行为执行的主体：JS中的context代表的是当前行为执行的环境（区别）：
+			   //例如：珠峰在沙县吃小吃，this指珠峰，context->沙县小吃
+			 this是谁和函数在哪定义和在哪执行没有任何关系：如何区分this？
+			1、函数执行，首先看函数名前面有没有".",有的话就是"."前面是谁this就是谁，没有的话就是window
+				 functhion fn(){
+				 	console.log(this);
+				 }
+				 var obj = {fn:fn};
+				 fn();//this->window
+				 obj.fn();//this->obj
+			
+			    function sum(){
+			    	fn();//this->window
+			    }
+			    sum();
+			    var oo ={
+			    	sum:function(){
+			    		fn();//this->window
+			    	}
+			    }
+			    oo.sum();//
+			    //你以为 你以为的 就是你以为的 严格按照规律
+			    
+			2、自执行函数中的this永远是window
+			3、给元素的某个事件绑定方法，当事件触发的时候，执行对应的方法，方法中的this是当前元素
+			    document.getElementById('div1').onclick=fn;  //fn中的this->#div1
+			    document.getElementById('div1').onclick=function(){
+			  	  //this ->#div1
+			  	  fn();//this->window
+			    };
+			 
+			 
+			4、在构造函数模式当中，类中（函数体）中出现的this.xxx=xxx中的this是当前类的一个实例
+			function CreateJsPerson(name,age){
+				//浏览器默认创建的对象是实例p2
+				this.name =name;
+				this.age = age;
+				this.writeJs = function(){
+					console.log('my name is'+this.name+'i can write js lala')
+					
+				};
+//				return obj;
+				//浏览器在把创建的实例返回
+			}
+			var p2 = new CreateJsPerson('茵栀黄',18)
+			 
+			5、原型链上查找
+			1）、看方法执行的时候，‘.’前面是谁，this就是谁
+			1）、把函数体中的this替换成分析的结果
+			3）、按照原型链的查找模式找到对应的值即可
+			function Fn(){
+				this.x = 100;
+				this.y = 200;
+			}
+			Fn.prototype.getX = function(){
+				console.log(this.x);
+			}
+			Fn.prototype.setX = function(){
+				this.x = n;
+			}
+			var f1 = new Fn;
+			var f2 = new Fn;
+			f1.getX()//this -> f1,console.log(f1.x) 100
+			f1.__proto__.getX()//this -> f1.__proto__,console.log(f1.__proto__.x) undefined
+			Fn.prototype.setX(300) //->this -> Fn.prototype   Fn.prototype.x = 300;
+			f1.y = 300;//给f1本身增加一个私有属性和f2没关系
+			f1.__proto__.y =1000;//在原型链上增加一个y=1000，f2也可以获取到这个y值
+			
+			
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 
+			 * */
+		</script>
+	</body>
+</html>

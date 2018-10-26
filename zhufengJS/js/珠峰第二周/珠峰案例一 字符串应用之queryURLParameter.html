@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			/*
+									 * 案例：获取地址栏中URL地址问号传递参数值
+									 * https://www.baidu.com/s?wd=node&rsv_spt=1
+									 * https://www.baidu.com/s?wd=javascript&rsv_spt=1
+									 * 目标：把问号传递的参数值分别的解析出来
+									 * obj={wd:'javascript',rsv_spt:1,issp:1}
+									 * 
+									 * 
+									 * 解析URL地址的每一部分的信息（包含问号传递的参数值）
+									1、纯字符串拆分截取  2、编写强大的正则，捕获到需要的结果  3、通过动态创建a标签和一些内置的属性来分别获取每一部分的内容
+									 * 
+									 * 
+									 * 
+									 * 
+									 * 
+									 * 
+									 * */
+			//			var str = 'https://www.baidu.com/s?wd=node&rsv_spt=1';
+			//			//			解析成对象   {wd:'javascript',rsv_spt:1,issp:1}
+			//			// =》方案一：
+			//			var questionIndex = str.indexOf('?');
+			//			str = str.substring(questionIndex + 1);
+			//			//			console.log(str) //-》'wd=node&rsv_spt=1'
+			//			var ary = str.split('&');
+			//			//			console.log(ary) // -> ["wd=node", "rsv_spt=1"]
+			//			var obj = {};
+			//			for(var i = 0; i < ary.length; i++) {
+			//				var cur = ary[i];
+			//				var curAry = cur.split('='), //=>["wd", "node"]
+			//					key = curAry[0],
+			//					value = curAry[1];
+			//				obj[key] = value;
+			//				//obj.key //属性名
+			//			}
+			//			console.log(obj); //{wd: "node", rsv_spt: "1"}
+			//
+		</script>
+
+		<script type="text/javascript">
+			function queryURLParameter(url) {
+				//=>url:传递的参数（要解析的url地址）
+				var quesIndex = url.indexOf('?'),
+					obj = {};
+				if(quesIndex === -1) { //url中间没有问号传参：直接返回空对象
+					return obj;
+				}
+				url = url.substr(quesIndex + 1);
+				//wd=javascript&rsv_spt=1
+				var ary = url.split('&');
+				//[wd=javascript,rsv_spt=1]
+				for(var i = 0; i < ary.length; i++) {
+					var curAry = ary[i].split('=');
+					//					[wd,javascript]
+					obj[curAry[0]] = curAry[1];
+				}
+				return obj;
+			}
+			var str = 'https://www.baidu.com/s?wd=javascript&rsv_spt=1'
+			console.log(queryURLParameter(str)); //{wd: "javascript", rsv_spt: "1"}
+		</script>
+
+		<script type="text/javascript">
+			//正则方法
+			String.prototype.myQueryURlParameter = function myQueryURlParameter() {
+				var obj = {},
+					reg = /([^=?&]+)=([^=?&]+)/g;
+				this.replace(reg, function() {
+					var arg = arguments;
+					obj[arg[1]] = arg[2];
+				})
+				return obj;
+
+			}
+			var str = 'https://www.baidu.com/s?wd=javascript&rsv_spt=1'
+			console.log(str.myQueryURlParameter()); //{wd: "javascript", rsv_spt: "1"}
+		</script>
+		<script type="text/javascript">
+			//动态创建标签的方法
+			//			var link = document.createElement('a');
+			//			link.href = 'http://www.zhufengpeixun.cn/stu/?name=zxt&age=27&sex=0#teacher';
+			//			console.dir(link)
+			//->hash:存储了哈希值 '#teacher'
+			//->hostname:域名'www.zhufengpeixun.cn'
+			//->pathname:路径 '/stu/'
+			//->protocol:协议 'http：'
+			//->search:问号传递参数值  '?name=zxt&age=27&sex=0'
+
+			function queryURLParameter(url) {
+				var link = document.createElement('a');
+				link.href = url;
+				var search = link.search,
+					obj = {};
+					console.log(search)
+				if(search.length === 0) return;
+				search = search.substr(1).split(/&|=/g); //'?name=zxt&age=27&sex=0'.substr(1).split(/&|=/g)   (6) ["name", "zxt", "age", "27", "sex", "0"]	
+				for(var i = 0; i < search.length; i += 2) {
+					var key = search[i],
+						value = search[i + 1];
+					obj[key] = value;
+				}
+				link = null;
+				return obj;
+			}
+			console.log(queryURLParameter('http://www.zhufengpeixun.cn/stu/?name=zxt&age=27&sex=0#teacher')); //{2: "7", ?: "n", a: "g", e: "x", z: "x", t: "&", …}
+		</script>
+
+	</body>
+
+</html>

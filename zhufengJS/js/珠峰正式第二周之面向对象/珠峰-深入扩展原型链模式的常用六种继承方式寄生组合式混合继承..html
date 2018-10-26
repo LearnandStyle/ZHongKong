@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			 function A(){
+			  	this.x = 100;
+			  }
+			  A.prototype.getX = function(){
+			  	console.log(this.x);
+			  };
+			  function B(){
+			     A.call(this);//->n.x=100
+			  }
+			  //B.prototype = new A;//  B.prototype:x=100  gerX....->
+			  
+			  //B.prototype = Object.create(A.prototype)//不兼容，下列写方法使其兼容
+			  B.prototype =objectCreate(A.prototype);
+			  B.prototype.constructor = B;
+			  function objectCreate(o){
+			  	function fn(){}
+			  	fn.prototype = o;
+			  	return new fn;
+			  }
+			  var n = new B();
+			  n.getX();
+			  
+		
+		
+		
+		
+		</script>
+	</body>
+</html>

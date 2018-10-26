@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin: 0;
+			font-size: 14px;
+		}
+		#codeBox{
+			margin: 20px auto;
+			width: 200px;
+			height: 50px;
+			border:1px solid black;
+			line-height: 50px;
+			text-align: center;
+			letter-spacing: 5px;
+			cursor: pointer;
+		}
+	</style>
+	<body>
+		<div id="codeBox">Ab3F</div>
+		<script type="text/javascript">
+			/*
+			 * 真实项目中的验证码一般是后台处理的 后台返回给客户端展示的是一个图片（图片中包含了验证码）
+			 * 形式：字母+数字
+			 * 2、问题      3、12306 选择图片  4、成语填空   5、图片拼图  6、滑动拖拽
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 
+			 * 
+			 * */
+			var codeBox = document.getElementById('codeBox');
+			//生成四位随机验证码：取值范围
+			var areStr = '0123456789qwertyuiopasdfghjklzxcvbbnmQWERTYUIOPASDFGHJKLZXCVBBNM';
+			//=>62位（0~61）  获取其中的字符 areStr[2]  areStr.charAt[2]
+			
+			var result = '';
+			for(var i = 0;i<4;i++){
+				//=>随机获取一个0~61之间的整数：作为接下来获取索引字符的索引
+				var ran = Math.round(Math.random()*(61-0)+0);
+				//根据索引获取一个随机字符
+				var char = areStr.charAt(ran);
+				//把每一次循环获取的字符存放在最后结果中
+				result += char;
+			}
+			codeBox.innerHTML = result;
+		</script>
+		
+	</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1"></div>
+		<a href="" class="a"></a>
+		<script type="text/javascript">
+			//div、a、document、window   控制台dir(div 、a、document、window)
+//			var a = document.getElementsByClassName('a')
+//			console.dir(a)
+		   function  Fn(){//所有的类都是函数对象类型
+		   	  this.x = 100;
+		   }
+		   var f1 = new Fn();
+		   var f2 = new Fn();
+		   //JS中的规定内容
+			/*
+			 1、
+			 1）、所有函数数据类型（普通函数、类）都有一个天生自带的属性：prototype（原型），
+			 	存储的值是一个对象数据类型的值，浏览器为其开辟一个新的堆内存
+			 2）、在浏览器给prototype默认开辟的这个堆内存上有一个默认的属性：constructor，
+			             指向当前类本身
+			 3）、每个对象数据原型（普通的对象、数组、正则、实例、类、prototype。。。）
+			 	都天生自带一个属性：__proto__,指向当前实例所属类的原型（prototype）
+			 
+			 2、this指向问题
+			 function Fn(){
+				this.x = 100;
+				this.y = 200;
+			}
+			Fn.prototype.getX = function(){
+				console.log(this.x);
+			}
+			Fn.prototype.setX = function(){
+				this.x = n;
+			}
+			var f1 = new Fn;
+			var f2 = new Fn;
+			f1.getX()//this -> f1,console.log(f1.x) 100
+			f1.__proto__.getX()//this -> f1.__proto__,console.log(f1.__proto__.x) undefined
+			Fn.prototype.setX(300) //->this -> Fn.prototype   Fn.prototype.x = 300;
+			f1.y = 300;//给f1本身增加一个私有属性和f2没关系
+			f1.__proto__.y =1000;//在原型链上增加一个y=1000，f2也可以获取到这个y值
+			
+			1）、看方法执行的时候，‘.’前面是谁，this就是谁
+			1）、把函数体中的this替换成分析的结果
+			3）、按照原型链的查找模式找到对应的值即可
+			
+			f1.getX(); //getX中的this是f1->this替换掉console.log(f1.x); ->原型链上查找的100
+			 
+			 
+			 
+			 
+			 */
+		     
+		</script>
+	</body>
+</html>
