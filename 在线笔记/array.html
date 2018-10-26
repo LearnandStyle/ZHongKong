@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组相关笔记</title>
+    <link rel="stylesheet" href="https://dev.jfh.com/styles/base.css">
+    <link rel="stylesheet" href="https://dev.jfh.com/styles/common.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="container">
+    <!-- 数据的删除 -->
+    <section>
+        <div class="title">数据的删除</div>
+        <div class="info">
+            <div>方法：</div>
+            <div>splice(index, num)</div>
+        </div>
+        <div class="info">
+            <div>说明：</div>
+            <div>从索引index开始，删除num个元素，返回被删除元素组成的数组，原来的数据改变</div>
+        </div>
+    </section>
+
+    <!-- 数组的查询 -->
+    <section>
+        <div class="title">数组的查询</div>
+        <div class="info">
+            <div>方法：</div>
+            <div>slice(n, m)</div>
+        </div>
+        <div class="info">
+            <div>说明：</div>
+            <div>从索引n开始找到索引为m处，不包含m，把找到的部分以一个新数组返回，原来的数组不变</div>
+        </div>
+        <div class="info">
+            <div>其他：</div>
+            <div>
+                <span>slice(0)/slice()-->数组克隆，克隆一份和原来数组一模一样的数组、slice(n)-->从索引n开始找到末尾、slice支持负数索引-->浏览器解析的时候是按照总长度+负数索引 来处理的</span>
+            </div>
+        </div>
+        <div class="info">
+            <div>扩展：</div>
+            <div>
+                <span>Array.prototype.mySlice = function mySlice(){
+        var n = arguments[0], m = arguments[1], newAry = [];
+        n = n === undefined ? 0 : (isNaN(n) ? 0 : (n >= 0 ? (n < this.length ? Math.floor(Number(n)) : this.length) : (n < -this.length ? 0 : (n <= -1 ? this.length + Math.ceil(Number(n)) : 0))));
+
+        m = m === undefined ? this.length : (isNaN(m) ? 0 : (m >= 0 ? (m < this.length ? Math.floor(Number(m)) : this.length) : (m < -this.length ? 0 : this.length + Math.ceil(Number(m)))));
+
+        while(n < m){
+            newAry[newAry.length] = this[n];
+            n++;
+        }
+        return newAry;
+    };</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 将两个数组进行拼接 -->
+    <section>
+        <div class="title">数组的拼接</div>
+        <div class="info">
+            <div>方法：</div>
+            <div>concat()</div>
+        </div>
+        <div class="info">
+            <div>说明：</div>
+            <div>将多个数组进行拼接，把内容放在原来数组的后面（可以是数组，可以是一些数据值），返回拼接后的新数组，原来数组不变</div>
+        </div>
+        <div class="info">
+            <div>其他：</div>
+            <div>concat()--> 什么都没拼接，相当于把原有数组克隆一份一模一样的新数组出来</div>
+        </div>
+    </section>
+
+    <!-- 数组转换成字符串 -->
+    <section>
+        <div class="title">数组转换成字符串</div>
+        <div class="info">
+            <div>方法：</div>
+            <div>toString()</div>
+        </div>
+        <div class="info">
+            <div>说明：</div>
+            <div>转换后的字符串，原有数组不变，把每一项以逗号分隔</div>
+        </div>
+    </section>
+
+    <!-- 数组转换成字符串 -->
+    <section>
+        <div class="title">数组转换成字符串</div>
+        <div class="info">
+            <div>方法：</div>
+            <div>join()</div>
+        </div>
+        <div class="info">
+            <div>说明：</div>
+            <div>把数组按照指定的分隔符转换为字符串，和字符串中的split()相对应，转换后的字符串，原有数组不变</div>
+        </div>
+        <div class="info">
+            <div>其他：</div>
+            <div>join()-->参数不传，默认以逗号分隔</div>
+        </div>
+        <div class="info">
+            <div>扩展：</div>
+            <div>已知数组中的每一项都是数字，实现数组求和！（eval(ary.join('+'))-->把字符串变为JS表达式执行）</div>
+        </div>
+    </section>
+
+    <!-- 数组中的排列 -->
+    <section>
+        <div class="title">数组中的排列</div>
+        <div class="info">
+            <div>方法：</div>
+            <div>reverse()</div>
+        </div>
+        <div class="info">
+            <div>说明：</div>
+            <div>把数组中的每一项倒过来排列，排列后的数组，原有数组改变</div>
+        </div>
+    </section>
+
+    <!-- 数组中的排序 -->
+    <section>
+        <div class="title">数组中的排序</div>
+        <div class="info">
+            <div>方法：</div>
+            <div>sort()</div>
+        </div>
+        <div class="info">
+            <div>说明：</div>
+            <div>参数无或者回调函数，排序后的数组，原有数组改变</div>
+        </div>
+        <div class="info">
+            <div>其他：</div>
+            <div>
+                <span>sort()-->不传参数的情况下，可以给10以内的数字进行升序排列，多位数只识别第一位、sort(callback)-->（return a - b; --> 升序、return b - a;-->降序）</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数组中是否包含某一项 -->
+    <section>
+        <div class="title">数组中是否包含某一项</div>
+        <div class="info">
+            <div>方法：</div>
+            <div>indexOf()、lastIndexOf()</div>
+        </div>
+        <div class="info">
+            <div>说明：</div>
+            <div>获取当前项在数组中第一次或者最后一次出现位置的索引，如果数组中没有这一项，返回索引-1</div>
+        </div>
+        <div class="info">
+            <div>其他：</div>
+            <div>在IE6~8下不兼容、字符串中的这两个方法兼容所有的浏览器包括IE6~8</div>
+        </div>
+        <div class="info">
+            <div>扩展：</div>
+            <div>
+                <span>Array.prototype.myIndexOf = function myIndexOf(value) { var result = -1; for(var i = 0; i < this.length; i++){ if(value === this[i]){ result = i; break; } } return result; }</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数组的遍历 -->
+    <section>
+        <div class="title">数组的遍历</div>
+        <div class="info">
+            <div>方法：</div>
+            <div>forEach()、map()、find()、filter()、reduce()、every()</div>
+        </div>
+        <div class="info">
+            <div>说明：</div>
+            <div>这些方法在IE6~8下都不兼容</div>
+        </div>
+        <div class="info">
+            <div>其他：</div>
+            <div>map()-->在forEach()的基础上，可以修改每一项的值</div>
+        </div>
+    </section>
+
+    <!-- 数组去重 -->
+    <section>
+        <div class="title">数组去重</div>
+        <div class="info">
+            <div>说明：</div>
+            <div>遍历数组中的每一项，把每一项和它后面的项依次比较，如果相同了，则把相同的这一项在原来的数组中删除即可</div>
+        </div>
+        <div class="info">
+            <div>扩展：</div>
+            <div>
+                <span>for(var i = 0; i < ary.length - 1; i++){ var cur = ary[i]; for(var j = i + 1; j < ary.length;){ cur === ary[j] ? ary.splice(j, 1) : j++; } }</span>
+            </div>
+        </div>
+
+        <div class="info">
+            <div>说明：</div>
+            <div>利用indexOf来验证当前数组中是否包含某一项，把包含的当前项删除</div>
+        </div>
+        <div class="info">
+            <div>扩展：</div>
+            <div>
+                <span>for(var i = 0; i < ary.length; i++){var cur = ary[i];var curNextAry = ary.slice(i + 1);if(curNextAry.indexOf(cur) > -1){ary.splice(i, 1);i--;}}</span>
+            </div>
+        </div>
+
+        <div class="info">
+            <div>说明：</div>
+            <div>
+                对象键值对处理：遍历数组中的每一项，把每一项作为新对象的属性名和属性值存储起来；每一次存储之前验证一下当前对象中该属性是否存在，如果存在我们则不再存储并且把当前这个重复项删除掉即可；如果不存在我们就存储进来即可。
+            </div>
+        </div>
+        <div class="info">
+            <div>扩展：</div>
+            <div>
+                <span>Array.prototype.myUnique = function myUnique() {var obj = {};for(var i = 0; i < this.length; i++){var item = this[i];if(typeof obj[item] !== 'undefined'){this[i] = this[this.length - 1];this.length--;i--;continue;}obj[item] = item;}obj = null;return this;};</span>
+            </div>
+        </div>
+
+        <div class="info">
+            <div>说明：</div>
+            <div>相邻比较法（首先给数组进行排序，然后相邻两项比较，相同的话，把后一项在数组中去掉）</div>
+        </div>
+    </section>
+
+    <!-- 冒泡排序 -->
+    <section>
+        <div class="title">冒泡排序</div>
+        <div class="info">
+            <div>说明：</div>
+            <div>让数组中的当前项和后一项进行比较，如果当前项大于后一项，我们让两者交换位置（由小到大）</div>
+        </div>
+        <div class="info">
+            <div>扩展：</div>
+            <div>
+                <span>function bubble(ary) {for(var i = 0; i < ary.length - 1; i++){for(var j = 0; j < ary.length - 1 - i; j++){if(ary[j] > ary[j + 1]){var temp = ary[j];ary[j] = ary[j + 1];ary[j + 1] = temp;}}}return ary;}</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 递归 -->
+    <section>
+        <div class="title">递归</div>
+        <div class="info">
+            <div>说明：</div>
+            <div>函数自己调用自己</div>
+        </div>
+        <div class="info">
+            <div>扩展：</div>
+            <div>
+                <span>var fn = function (num) {if(num > 100){return 0;}if(num % 15 === 0){return num + fn(num + 1);}return fn(num + 1);};fn(1);</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 快速排序 -->
+    <section>
+        <div class="title">快速排序</div>
+        <div class="info">
+            <div>说明：</div>
+            <div>找出中间项，把剩余项中的每一个值和中间项进行比较，比它小的放在左边（新数组），比它大的放在右边（新数组）</div>
+        </div>
+        <div class="info">
+            <div>扩展：</div>
+            <div>
+                <span>function quick(ary) {if(ary.length <= 1){return ary;}var centerIndex = Math.floor(ary.length / 2);var centerValue = ary.splice(centerIndex, 1)[0];var aryLeft = [];var aryRight = [];for(var i = 0; i < ary.length; i++){var cur = ary[i];cur < centerValue ? aryLeft.push(cur) : aryRight.push(cur);}return quick(aryLeft).concat(centerValue, quick(aryRight));}</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 插入排序 -->
+    <section>
+        <div class="title">插入排序</div>
+        <div class="info">
+            <div>扩展：</div>
+            <div>
+                <span>function insert(ary) {var handAry = [];handAry.push(ary[0]);for(var i = 1; i < ary.length; i++){var item = ary[i];for(var j = handAry.length - 1; j >= 0; j--){if(item > handAry[j]){handAry.splice(j + 1, 0, item);break;}if(j === 0){handAry.unshift(item);}}}return handAry;}</span>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+<!--
+<section>
+    <div class="title"></div>
+    <div class="info">
+        <div>方法：</div>
+        <div></div>
+    </div>
+    <div class="info">
+        <div>说明：</div>
+        <div></div>
+    </div>
+    <div class="info">
+        <div>其他：</div>
+        <div></div>
+    </div>
+    <div class="info">
+        <div>扩展：</div>
+        <div></div>
+    </div>
+</section>
+-->
+<script type="text/javascript">
+
+
+</script>
+</html>

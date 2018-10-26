@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则相关笔记</title>
+    <link rel="stylesheet" href="https://dev.jfh.com/styles/base.css">
+    <link rel="stylesheet" href="https://dev.jfh.com/styles/common.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="container">
+    <!-- 正则的基础知识 -->
+    <section>
+        <div class="title">正则的基础知识</div>
+        <div class="info">
+            <div>说明：</div>
+            <div>正则就是一个规则，用来处理“字符串”的规则</div>
+        </div>
+        <div class="info">
+            <div>其他：</div>
+            <div>
+                1、正则匹配：编写一个规则，验证某个字符串是否符合这个规则，正则匹配使用的是“test”方法；2、正则捕获：编写一个规则，在字符串中把符合规则的内容都获取到，正则捕获使用的方法：正则的“exec”方法、字符串中的“split、replace、match”等方法都支持正则
+            </div>
+        </div>
+        <div class="info">
+            <div>扩展：</div>
+            <div>
+                <span>var reg = /^$/;（两个斜杆中间包含一些内容就是正则，两个斜杠中间的字符都是正则的元字符）</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 正则的元字符和修饰符 -->
+    <section>
+        <div class="title">正则的元字符和修饰符</div>
+        <div class="info">
+            <div>说明：</div>
+            <div>任何一个正则都是由元字符和修饰符组成的</div>
+        </div>
+        <div class="info">
+            <div>其他：</div>
+            <div>
+                <!--<p>
+                    1、“修饰符”：
+                    g（global）：全局匹配；
+                    i（ignoreCase）：忽略大小写匹配；
+                    m（multiline）：多行匹配；
+                </p>-->
+                <div class="image-content">
+                    <div class="image-content-desc">修饰符</div>
+                    <img src="images/修饰符.png" alt="">
+                </div>
+
+                <!--<p>2、“元字符”：</p>-->
+                <!--<p>
+                    【量词元字符】
+                    +：一到多次；
+                    ?：零到一次；
+                    *：零到多次；
+                    {n}：出现n次；
+                    {n,}：出现n到多次；
+                    {n,m}：出现n到m次；
+                </p>-->
+                <div class="image-content">
+                    <div class="image-content-desc">量词元字符</div>
+                    <img src="images/量词元字符.png" alt="">
+                </div>
+                <!--<p>【特殊元字符】
+                    \：转义字符；
+                    .：除了\n（换行符）以外的任意字符；
+                    \d：0~9之间的数字；
+                    \D：任意非0~9数字（大写字母和小写字母正好是反向）；
+                    \w：数字、字母、下划线； \s：任意空白字符；
+                    \b：边界符； \n：换行符；
+                    x|y：x或者y中的一个；
+                    [a-z]：a-z中的任意一个；
+                    [^a-z]：非a-z的字符；
+                    [xyz]：x或者y或者z中的一个字符；
+                    [^xyz]：非x或者y或者z中的一个字符；
+                    ()：正则的小分组，匹配一个小分组（大正则中的小正则）；
+                    ^：以某个元字符开始； &：以某个元字符结束；
+                    ?:：只匹配不捕获；
+                    ?=：正向预查； ?!：反向预查；
+                </p>-->
+                <div class="image-content">
+                    <div class="image-content-desc">特殊元字符</div>
+                    <img src="images/特殊元字符.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 正则的开始、结束、转义 -->
+    <section>
+        <div class="title">正则的开始、结束、转义</div>
+        <div class="info">
+            <div>扩展：</div>
+            <div>
+                <p>1、var reg = /^\d+$/;（只能是某某某，这里是只能是一到多个数字）；</p>
+                <p>2、var reg = /^\\d$/;（当两个斜杠出现的时候，就是两个斜杠），所以（reg.test('\\d')=> true;）；</p>
+                <p>3、“()”：正则中的分组，也可以理解为一个大正则中的一个正则，可以改变一些默认的优先级，小分组还有第二个作用：“分组引用”，小分组的第三个作用：“分组捕获”。【var reg =
+                    /^([a-z])([a-z])\2([a-z])$/;（分组引用：\1、\2...\n 出现和第n个分组一模一样的字符，符合的字符：foot、book、week、attr、http...）】</p>
+                <p>4、“[]”：var reg = /^[a-zA-Z0-9_]$/;（等价于\w，中括号中出现的元字符，一般代表本身的含义）；var reg =
+                    /^[.?+&]+$/;（里面的四个元字符都是本身的含义，例如：点就是小数点了，不是所谓的任意字符）；【描述样式类名的规则：数字、字母、下划线、-，并且不能以-开头】var reg =
+                    /^\w[\w-]*$/;</p>
+                <p>5：【需求：验证18~65之间的年龄】var reg = /^[18-65]$/;（中括号中出现的18，不是数字18，而是1或者8，当前正则是非法的，因为不能设置8~6这种范围）；正确的是（var
+                    reg = /^((18|19)|([2-5]\d)|(6[0-5]))$/;）</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="title">正则的相关示例</div>
+        <div class="info">
+            <div>示例：</div>
+            <div>
+                <p>获取文件后缀名：var reg = /\.(\w+)$/gi;</p>
+                <p>获取文件的名称：var reg = /(?!.*?\/)(.*?).\w+$/gi;</p>
+                <p>去除HTML标签外的回车换行符空格：var reg = /(?=[^>]*(?=<))\s+|&amp;nbsp;/gi</p>
+                <p>去除HTML标签：var reg = /<[^>]*>|<\/[^>]*|[\r\n\s]|&amp;nbsp;/gi</p>
+                <p>匹配字符串末尾的三个字符：var reg = /(.{3}$)+/gi</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- JS代码实例 -->
+    <section>
+        <div class="title">JS代码实例</div>
+        <div class="info">
+            <div>实例</div>
+            <div>
+                <div class="image-content">
+                    <div class="image-content-desc">正则去除HTML标签</div>
+                    <img src="images/正则去除HTML标签.png" alt="">
+                </div>
+
+                <div class="image-content">
+                    <div class="image-content-desc">获取文件后缀名</div>
+                    <img src="images/获取文件后缀名.png" alt="">
+                </div>
+
+                <div class="image-content">
+                    <div class="image-content-desc">获取文件的名称</div>
+                    <img src="images/获取文件的名称.png" alt="">
+                </div>
+
+                <div class="image-content">
+                    <div class="image-content-desc">匹配字符串末尾的三个字符</div>
+                    <img src="images/匹配字符串末尾的三个字符.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+</body>
+
+<script type="text/javascript">
+
+    var str = 'https://www.baidu.com';
+    str = str.replace(/(?:.*?)(.{3}$)+/gi, function($1, $2){
+        return $2;
+    });
+    console.log(str); // com
+
+</script>
+
+</html>
